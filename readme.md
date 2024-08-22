@@ -15,8 +15,8 @@ daily_demo
 ├─ javascript                          # demo for js
 │  └─ game-maze
 │     └─ index.html                    # 迷宫，数据相关
-├─ react                               # demo for ts
+├─ react                               # demo for react
 ├─ typescript                          # demo for ts
-├─ vue
+├─ vue                                 # demo for vue
 └─ readme.md                           # 记录文档
 ```
