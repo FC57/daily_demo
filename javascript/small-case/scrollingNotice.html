@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滚动公告</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .list {
+        list-style: none;
+        margin-left: 30px;
+        font-size: 12px;
+        height: 30px;
+        padding: 0 10px;
+        overflow: hidden;
+        li {
+          height: 30px;
+          line-height: 30px;
+          user-select: none;
+        }
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        background-color: skyblue;
+        padding: 0 20px;
+        border-radius: 4px;
+      }
+      .tip {
+        font-size: 14px;
+        font-weight: 600;
+        border-right: 1px solid #eee;
+        padding-right: 30px;
+        user-select: none;
+      }
+      .test .content {
+        height: 30px;
+        margin-top: 20px;
+      }
+      .test .content:not(:last-child) {
+        background-color: #fca;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="tip">最新公告</div>
+      <ul class="list">
+        <li>1.Lorem ipsum dolor sit.</li>
+        <li>2.Soluta molestiae adipisci quos?</li>
+        <li>3.Inventore aut recusandae reprehenderit.</li>
+        <li>4.Debitis illo voluptate blanditiis!</li>
+      </ul>
+    </div>
+    <h4 style="padding: 0 20px; margin-top: 50px">利用:not()伪类排除最后一个子元素</h4>
+    <div class="test">
+      <div class="content">1</div>
+      <div class="content">2</div>
+      <div class="content">3</div>
+    </div>
+
+    <script>
+      (() => {
+        const $ = document.querySelector.bind(document);
+        const listDom = $('.list');
+        // 克隆第一个子节点
+        function cloneFirstNode(node) {
+          const cNode = node.cloneNode(true);
+          listDom.appendChild(cNode);
+        }
+        cloneFirstNode(listDom.children[0]);
+        const itemHeight = 30;
+        const duration = 2000;
+        const stepDuration = 10;
+        const totalDuration = 300;
+        const step = itemHeight / (totalDuration / stepDuration);
+        // 移动滚动条
+        let curIndex = 0;
+        function moveTo() {
+          let from = itemHeight * curIndex;
+          curIndex++;
+          let to = itemHeight * curIndex;
+          if (curIndex === listDom.children.length - 1) {
+            curIndex = 0;
+          }
+          const timerId = setInterval(() => {
+            from += step;
+            if (from >= to) {
+              clearInterval(timerId);
+            }
+            listDom.scrollTop = from;
+          }, stepDuration);
+        }
+        const timer = setInterval(moveTo, duration);
+        window.addEventListener('beforeunload', () => {
+          // 页面退出，清除定时器
+          clearInterval(timer);
+        });
+      })();
+    </script>
+  </body>
+</html>

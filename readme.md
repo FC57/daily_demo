@@ -28,7 +28,8 @@ daily_demo
 │  ├─ game-maze
 │  │  └─ index.html                      # 迷宫，数据相关（三维数组）
 │  └─ small-case
-│     └─ countdown.html                  # 倒计时
+|     ├─ countdown.html                  # 倒计时
+│     └─ scrollingNotice                 # 滚动公告（附加:not()伪类测试）
 ├─ react                                 # demo for react
 ├─ typescript                            # demo for ts
 ├─ vue                                   # demo for vue
