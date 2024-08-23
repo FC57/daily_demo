@@ -11,9 +11,10 @@ Download the Live Server plugin for VSCode
 ### Open source library CDN
 
 > 特别感谢开源库 CND _BootCDN_：https://www.bootcdn.cn/
+>
 > 日常 demo 不用搭建整个工程， npm 对应包运行
 
-![BootCDN](https://img-blog.csdnimg.cn/990cb9b7769548a9af377808fa943c56.png)
+<img src="https://img-blog.csdnimg.cn/9c4b84894c644325b44f748eadd795dd.png" alt="BootCDN" style="zoom: 50%;" />
 
 ### file tree
 
@@ -40,6 +41,7 @@ daily_demo
 |     ├─ dragbleApi.html                 # 拖拽API练习
 │     └─ scrollingNotice                 # 滚动公告（附加:not()伪类测试）
 ├─ react                                 # demo for react
+│     └─ ag-grid-react-data.html         # 请求后端的数据，转换适配组件ag-grid-react表格所需
 ├─ typescript                            # demo for ts
 ├─ vue                                   # demo for vue
 └─ readme.md                             # 记录文档
