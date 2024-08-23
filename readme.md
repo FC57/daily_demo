@@ -21,23 +21,26 @@ Download the Live Server plugin for VSCode
 ```text
 daily_demo
 ├─ assets                               # 资源文件
-│  └─ imgs
-│     ├─ 0.png                          # 倒计时数字图0-9
-│     ├─ 1.png
-│     ├─ 2.png
-│     ├─ 3.png
-│     ├─ 4.png
-│     ├─ 5.png
-│     ├─ 6.png
-│     ├─ 7.png
-│     ├─ 8.png
-│     └─ 9.png
+│  ├─ imgs
+│  │  ├─ 0.png                          # 倒计时数字图0-9
+│  │  ├─ 1.png
+│  │  ├─ 2.png
+│  |  ├─ 3.png
+│  |  ├─ 4.png
+│  |  ├─ 5.png
+│  |  ├─ 6.png
+│  │  ├─ 7.png
+│  |  ├─ 8.png
+│  |  └─ 9.png
+│  └─ video
+│     └─ winter.mp4                      # canvas demo中用到的视频
 ├─ javascript                            # demo for js
 │  ├─ game-maze
 │  │  └─ index.html                      # 迷宫，数据相关（三维数组）
 │  └─ small-case
 |     ├─ adaptation.html                 # 移动端简易适配方案（缩放viewPort或rem方案）
-|     ├─ bignumber.html                  # 使用 BigNumber.js 解决js运算精度问题
+|     ├─ bignumber.html                  # 使用 bignumber.js 解决js运算精度问题
+|     ├─ canvas.html                     # canvas 画布demo
 |     ├─ countdown.html                  # 倒计时
 |     ├─ dragbleApi.html                 # 拖拽API练习
 |     ├─ mimeticStyle.html               # 拟态风格页签（按压）
