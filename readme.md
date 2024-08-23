@@ -28,6 +28,7 @@ daily_demo
 │  ├─ game-maze
 │  │  └─ index.html                      # 迷宫，数据相关（三维数组）
 │  └─ small-case
+|     ├─ adaptation.html                 # 移动端简易适配方案（缩放viewPort或rem方案）
 |     ├─ countdown.html                  # 倒计时
 |     ├─ dragbleApi.html                 # 拖拽API练习
 │     └─ scrollingNotice                 # 滚动公告（附加:not()伪类测试）
