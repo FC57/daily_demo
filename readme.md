@@ -8,6 +8,13 @@ Download the Live Server plugin for VSCode
 
 ![vscode-plugin-live Server](https://techstacker.com/static/b67ab1adeadeacd5164ee69e6cc07048/4d3f1/vscode-live-server-extension.png)
 
+### Open source library CDN
+
+> 特别感谢开源库 CND _BootCDN_：https://www.bootcdn.cn/
+> 日常 demo 不用搭建整个工程， npm 对应包运行
+
+![BootCDN](https://img-blog.csdnimg.cn/990cb9b7769548a9af377808fa943c56.png)
+
 ### file tree
 
 ```text
