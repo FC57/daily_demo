@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拟态风格页签</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .nav {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        background-color: #efeeee;
+        gap: 2px;
+      }
+      .nav .tag {
+        font-size: 14px;
+        position: relative;
+        color: #999;
+        background-color: #fff;
+        min-width: 125px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2), -2px -2px 20px rgba(255, 255, 255, 1);
+        transition: all 0.2s ease-out;
+      }
+      .nav .tag + .tag::before {
+        display: block;
+        position: absolute;
+        /* content: ''; */
+        height: 60%;
+        width: 1px;
+        background: linear-gradient(220deg, #02dbb0, #007adf);
+        top: 10px;
+      }
+      .nav .tag:hover {
+        cursor: pointer;
+        color: #333;
+        height: 34px;
+        line-height: 34px;
+        /* color: #fff; */
+        /* background: linear-gradient(220deg, #ee9ca7, #ffdde1); */
+        /* background: linear-gradient(220deg, #2193b0, #6dd5ed); */
+        /* background-color: #fff; */
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 rgba(255, 255, 255, 0.8),
+          inset 10px 10px 10px rgba(0, 0, 0, 0.1), inset -10px -10px 10px rgba(255, 255, 255, 1);
+      }
+      .nav .tag:hover::before,
+      .nav .tag:hover + .tag::before {
+        display: none;
+      }
+      .nav .tag.active {
+        /* color: #fff; */
+        color: red;
+        height: 34px;
+        line-height: 34px;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 rgba(255, 255, 255, 0.8),
+          inset 10px 10px 10px rgba(0, 0, 0, 0.1), inset -10px -10px 10px rgba(255, 255, 255, 1);
+        /* background: linear-gradient(220deg, #02dbb0, #007adf); */
+      }
+      .nav .tag.active + .tag::before,
+      .nav .tag.active::before {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <span class="tag active">active tab</span>
+      <span class="tag">tab2</span>
+      <span class="tag">tab3</span>
+      <span class="tag">tab4</span>
+    </div>
+  </body>
+</html>

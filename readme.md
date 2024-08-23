@@ -39,6 +39,7 @@ daily_demo
 |     ├─ adaptation.html                 # 移动端简易适配方案（缩放viewPort或rem方案）
 |     ├─ countdown.html                  # 倒计时
 |     ├─ dragbleApi.html                 # 拖拽API练习
+|     ├─ mimeticStyle.html               # 拟态风格页签（按压）
 │     └─ scrollingNotice                 # 滚动公告（附加:not()伪类测试）
 ├─ react                                 # demo for react
 │     └─ ag-grid-react-data.html         # 请求后端的数据，转换适配组件ag-grid-react表格所需
