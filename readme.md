@@ -37,6 +37,7 @@ daily_demo
 │  │  └─ index.html                      # 迷宫，数据相关（三维数组）
 │  └─ small-case
 |     ├─ adaptation.html                 # 移动端简易适配方案（缩放viewPort或rem方案）
+|     ├─ bignumber.html                  # 使用 BigNumber.js 解决js运算精度问题
 |     ├─ countdown.html                  # 倒计时
 |     ├─ dragbleApi.html                 # 拖拽API练习
 |     ├─ mimeticStyle.html               # 拟态风格页签（按压）

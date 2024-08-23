@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大数、高精度小数计算</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bignumber.js/9.1.2/bignumber.js"></script>
+
+    <p4>BigNumber 计算（支持链式调用，解决js运算精度问题）</p4>
+    <hr />
+    <p4>控制台F12查看输出结果</p4>
+
+    <script>
+      // 构建数据
+      const bigNumber = new BigNumber('123456789.123456789');
+      console.log('bigNumber 实例', bigNumber);
+
+      // 加法
+      console.log(
+        '%c加法 plus：0.1 + 0.2 = ',
+        'color:#00f',
+        new BigNumber(0.1).plus(0.2).toNumber()
+      );
+
+      // 减法
+      console.log(
+        '%c减法 minus：0.3 - 0.1 = ',
+        'color:#00f',
+        new BigNumber(0.3).minus(0.1).toNumber()
+      );
+
+      // 乘法
+      console.log(
+        '%c乘法 times：0.2 * 0.1 = ',
+        'color:#00f',
+        new BigNumber(0.2).times(0.1).toNumber()
+      );
+
+      // 除法
+      console.log('%c除法 div：0.3 / 0.2 = ', 'color:#00f', new BigNumber(0.3).div(0.2).toNumber());
+    </script>
+  </body>
+</html>
