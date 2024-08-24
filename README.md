@@ -37,7 +37,8 @@ daily_demo
 │     └─ winter.mp4                       # canvas demo中用到的视频
 ├─ dependent_libraries                    # 第三方库demo
 │  ├─ bignumber.html                      # bignumber.js-解决js运算精度丢失问题
-│  └─ dayjs.html                          # dayjs-日期相关计算
+│  ├─ dayjs.html                          # dayjs-日期相关计算
+│  └─ index.less                          # less-样式css工程化，webpack中less-loader转换为css
 ├─ javascript                             # demo for js
 │  ├─ game-maze
 │  │  └─ index.html                       # 迷宫，数据相关（三维数组）

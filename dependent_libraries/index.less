@@ -1,0 +1,93 @@
+// npm -D i less
+// 使用 lessc 文件名，编译成 css文件
+
+// 1、定义变量 用 @ ，.scss 中用 $
+@danger: #f40;
+@success: lightgreen;
+
+// 2、嵌套
+.containner {
+  .content {
+    color: @danger;
+    &.active {
+      color: @success;
+    }
+  }
+  // @规则嵌套与冒泡
+  width: 300px;
+  @media (min-width: 768px) {
+    width: 600px;
+    @media (min-resolution: 192dpi) {
+      background-image: linear-gradient(@danger, @success);
+    }
+  }
+  @media (min-width: 1280px) {
+    width: 800px;
+  }
+}
+
+// 3、混合 定义函数，.name(){} 类似函数，使用就调用函数 .name()
+// .scss 是@mixin round(){} ，使用 @include round
+.round(@r:5px) {
+  // 定义
+  border-radius: @r;
+}
+.list {
+  // 使用，这里是默认值 5px
+  .round();
+  li {
+    .round(6px);
+  }
+}
+
+// 4、映射
+#colors() {
+  primary: deepskyblue;
+  secondary: lightblue;
+}
+
+.button {
+  color: #colors[primary];
+  border: 1px solid #colors[secondary];
+}
+
+// 5、注释
+// 这是less注释，不会生成编译结果
+/* 这里的注释会生成编译结果*/
+
+// 6、内置函数
+.light {
+  // 指定颜色变亮 20%
+  background-color: lighten(@success, 20%);
+}
+.night {
+  // 指定颜色变暗 20%
+  background-color: darken(@danger, 20%);
+}
+
+// 7、条件判断
+// 多个判断,隔开，相当于 js 的 '或' ||
+.mixin (@a) when (@a > 10), (@a < -10) {
+  // ...
+}
+// and 连接，相当于 &&
+.mixin (@a) when (@a > 0) and (@a < 10) {
+  // ...
+}
+// not 相当于 !
+.mixin (@a) when not (@a > 0) {
+  // ... @a <=0
+}
+// default() 相当于 else，下面是 @width <=10%
+.size(@width) when (@width > 10%) {
+  color: red;
+}
+.size(@width) when (default()) {
+  color: #333333;
+}
+
+// 条件判断在 less@3.0 后，可以用 if
+// if(条件，满足设置，不满足设置)
+.bgColor(@c) {
+  color: if(iscolor(@c), #eac, #00ff);
+}
