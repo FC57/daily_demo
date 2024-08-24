@@ -48,7 +48,8 @@ daily_demo
 │     ├─ inaccurate-timing.html           # 解决页面失活导致计时不准问题
 │     ├─ lorem.html                       # Vscode 插件-Chinese Lorem，生成指定长度随机汉字
 │     ├─ mimeticStyle.html                # 拟态风格页签（tab-按压）
-│     └─ scrollingNotice.html             # 滚动公告（附加:not()伪类测试）
+│     ├─ scrollingNotice.html             # 滚动公告（附加:not()伪类测试）
+│     └─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
 ├─ react                                  # demo for react
 │  └─ data
 │     └─ ag-grid-react-data.html          # 请求后端的数据，转换适配组件ag-grid-react表格所需

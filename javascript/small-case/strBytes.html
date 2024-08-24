@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Bytes</title>
+  </head>
+  <body>
+    <h4>Count Bytes - 字符串所占字节数</h4>
+    <hr />
+    <p style="color: #00ff">靠字符串的length长度遍历字符串统计，是不准确的</p>
+    <p class="charCodeAt_length">
+      利用charCodeAt的范围，直接遍历字符length，🎅所占字节数为
+      <span></span>
+    </p>
+    <p class="charCodeAt">
+      利用charCodeAt的范围，通过码元遍历，🎅所占字节数为
+      <span></span>
+    </p>
+    <p class="blob">
+      利用Blob的size属性，🎅所占字节数为
+      <span></span>
+    </p>
+    <script type="module">
+      import { getLengthOfCodePoint } from '/utils/string.js';
+
+      /**
+       * charCodeAt统计字符串所占字节数
+       * @param str{string} 字符串
+       * @param isCodePointLen{boolean} 是否通过码点计算的长度
+       */
+      function countBytes(str, isCodePointLen = true) {
+        let count = 0;
+        const len = isCodePointLen ? getLengthOfCodePoint(str) : str.length;
+        for (let i = 0; i < len; i++) {
+          const charCode = str.charCodeAt(i);
+          if (charCode <= 0x007f) {
+            count += 1; // ASCII 字符，占用一个字节
+          } else if (charCode <= 0x07ff) {
+            count += 2; // Latin-1 补充字符，占用两个字节
+          } else if (charCode <= 0xffff) {
+            count += 3; // BMP 中的其他字符，占用三个字节
+          } else {
+            count += 4; // 其他 Unicode 字符，占用四个字节
+          }
+        }
+        return count;
+      }
+
+      /**
+       * Blob统计字符串所占字节数
+       * @param str{string} 字符串
+       */
+      function getStringByteSize(str) {
+        return new Blob([str]).size;
+      }
+
+      (() => {
+        const $ = document.querySelector.bind(document);
+
+        // 直接通过字符length遍历
+        const str = '🎅';
+        const byteCount = countBytes(str, false);
+        $('.charCodeAt_length span').innerHTML = byteCount;
+        console.log("字符串 '" + str + "' 的字节数为: " + byteCount);
+
+        // 通过码点获取长度再遍历
+        const str1 = '🎅';
+        const byteCount1 = getStringByteSize(str1);
+        $('.charCodeAt span').innerHTML = byteCount1;
+        console.log("字符串 '" + str1 + "' 的字节数为: " + byteCount1);
+
+        // 转二进制流，读取size
+        const str2 = '🎅';
+        const byteCount2 = getStringByteSize(str1);
+        $('.blob span').innerHTML = byteCount2;
+        console.log("字符串 '" + str1 + "' 的字节数为: " + byteCount2);
+      })();
+    </script>
+  </body>
+</html>
