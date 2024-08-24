@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nprogress</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+    <h4>ngrogress</h4>
+    <h5 style="color: #00ff">模拟组件页面加载时，顶部进度条</h5>
+    <hr />
+
+    <img src="/assets/imgs/t1.png" alt="" />
+
+    <script>
+      (() => {
+        const { start, done, configure } = NProgress;
+        // 配置
+        configure({
+          trickleSpeed: 20, // 速度
+          showSpinner: false // 不展示加载转圈
+        });
+
+        // 开始加载
+        start();
+        window.onload = function () {
+          // 加载结束，这里特意延迟一下看效果
+          setTimeout(() => {
+            done();
+          }, 500);
+        };
+      })();
+    </script>
+  </body>
+</html>

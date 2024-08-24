@@ -38,7 +38,8 @@ daily_demo
 ├─ dependent_libraries                    # 第三方库demo
 │  ├─ bignumber.html                      # bignumber.js-解决js运算精度丢失问题
 │  ├─ dayjs.html                          # dayjs-日期相关计算
-│  └─ index.less                          # less-样式css工程化，webpack中less-loader转换为css
+│  ├─ index.less                          # less-样式css工程化，webpack中less-loader转换为css
+│  └─ ngprogress.html                     # ngprogress-模拟组件加载时，顶部展示加载进度条
 ├─ javascript                             # demo for js
 │  ├─ game-maze
 │  │  └─ index.html                       # 迷宫，数据相关（三维数组）
