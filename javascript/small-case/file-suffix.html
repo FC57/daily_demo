@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Suffix</title>
+  </head>
+  <body>
+    <h4>后端响应头中 attachment 中通过正则截取文件后缀名</h4>
+    <h5 style="color: #00ff">
+      响应头attachment：'attachment;filename=%E6%89%A7%E8%A1%8C%E8%B4%B9%E7%94%A8%E6%98%8E%E7%BB%86.zip';
+    </h5>
+    <hr />
+
+    <p>
+      文件名称为：
+      <span class="filename"></span>
+    </p>
+    <p>
+      文件后缀：
+      <span class="suffix"></span>
+    </p>
+
+    <script>
+      (() => {
+        const $ = document.querySelector.bind(document);
+        const attachment =
+          'attachment;filename=%E6%89%A7%E8%A1%8C%E8%B4%B9%E7%94%A8%E6%98%8E%E7%BB%86.zip';
+        const filename = attachment.replace(/.*filename=(?=\;?.*)/, '').replace(/\;.+/, '');
+
+        $('.filename').innerHTML = decodeURIComponent(filename);
+        $('.suffix').innerHTML = filename.replace(/.+\.(?!\%)|.+/, '');
+      })();
+    </script>
+  </body>
+</html>
