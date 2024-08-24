@@ -32,7 +32,7 @@ daily_demo
 │  │  ├─ 7.png
 │  │  ├─ 8.png
 │  │  ├─ 9.png
-│  │  └─ t1.png
+│  │  └─ t1.png                           # canvas 绘制图片资源
 │  └─ video
 │     └─ winter.mp4                       # canvas demo中用到的视频
 ├─ dependentLibraries                     # 第三方库demo
@@ -40,6 +40,8 @@ daily_demo
 ├─ javascript                             # demo for js
 │  ├─ game-maze
 │  │  └─ index.html                       # 迷宫，数据相关（三维数组）
+│  ├─ pseudo-code                         # 伪代码-模拟流程
+│  │  └─ commonjs-require.js              # CommonJS规范导入函数require的流程
 │  └─ small-case
 │     ├─ adaptation.html                  # 移动端简易适配方案（缩放viewPort或rem方案）
 │     ├─ canvas.html                      # canvas 画布demo-api
