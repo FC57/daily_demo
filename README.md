@@ -51,6 +51,7 @@ daily_demo
 │     ├─ dragbleApi.html                  # 拖拽 demo-api
 │     ├─ file-suffix.html                 # 后端响应头中 attachment 中通过正则截取文件后缀名
 │     ├─ inaccurate-timing.html           # 解决页面失活导致计时不准问题
+│     ├─ indexedDB.html                   # 浏览器存储-indexedDB，存储大量结构化数据
 │     ├─ lorem.html                       # Vscode 插件-Chinese Lorem，生成指定长度随机汉字
 │     ├─ mimeticStyle.html                # 拟态风格页签（tab-按压）
 │     ├─ scrollingNotice.html             # 滚动公告（附加:not()伪类测试）
