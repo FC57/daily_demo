@@ -35,8 +35,9 @@ daily_demo
 │  │  └─ t1.png                           # canvas 绘制图片资源
 │  └─ video
 │     └─ winter.mp4                       # canvas demo中用到的视频
-├─ dependentLibraries                     # 第三方库demo
-│  └─ bignumber.html                      # bignumber.js-解决js运算精度丢失问题
+├─ dependent_libraries                    # 第三方库demo
+│  ├─ bignumber.html                      # bignumber.js-解决js运算精度丢失问题
+│  └─ dayjs.html                          # dayjs-日期相关计算
 ├─ javascript                             # demo for js
 │  ├─ game-maze
 │  │  └─ index.html                       # 迷宫，数据相关（三维数组）
