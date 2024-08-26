@@ -46,6 +46,7 @@ daily_demo
 │     ├─ mimeticStyle.html                # 拟态风格页签（tab-按压）
 │     ├─ scrollingNotice.html             # 滚动公告（附加:not()伪类测试）
 │     ├─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
+│     ├─ text-stroke.html                 # 解决文字阴影锯齿问题
 │     └─ upload-progress.html             # 模拟上传进度展示（进度条、速率、剩余传输预估时间）
 ├─ react                                  # demo for react
 │  └─ data
