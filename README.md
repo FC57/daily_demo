@@ -22,19 +22,7 @@ Download the Live Server plugin for VSCode
 daily_demo
 ├─ assets                                 # 资源文件
 │  ├─ imgs
-│  │  ├─ 0.png                            # 倒计时数字图0-9
-│  │  ├─ 1.png
-│  │  ├─ 2.png
-│  │  ├─ 3.png
-│  │  ├─ 4.png
-│  │  ├─ 5.png
-│  │  ├─ 6.png
-│  │  ├─ 7.png
-│  │  ├─ 8.png
-│  │  ├─ 9.png
-│  │  └─ t1.png                           # canvas 绘制图片资源
 │  └─ video
-│     └─ winter.mp4                       # canvas demo中用到的视频
 ├─ dependent_libraries                    # 第三方库demo
 │  ├─ bignumber.html                      # bignumber.js-解决js运算精度丢失问题
 │  ├─ dayjs.html                          # dayjs-日期相关计算
@@ -57,7 +45,8 @@ daily_demo
 │     ├─ lorem.html                       # Vscode 插件-Chinese Lorem，生成指定长度随机汉字
 │     ├─ mimeticStyle.html                # 拟态风格页签（tab-按压）
 │     ├─ scrollingNotice.html             # 滚动公告（附加:not()伪类测试）
-│     └─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
+│     ├─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
+│     └─ upload-progress.html             # 模拟上传进度展示（进度条、速率、剩余传输预估时间）
 ├─ react                                  # demo for react
 │  └─ data
 │     └─ ag-grid-react-data.html          # 请求后端的数据，转换适配组件ag-grid-react表格所需
