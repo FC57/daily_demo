@@ -53,6 +53,7 @@ daily_demo
 ├─ README.md                              # 记录文档
 ├─ typescript                             # demo for ts
 ├─ utils                                  # 自定义公用方法相关
+│  ├─ index.js                            # 其它类别方法
 │  └─ string.js                           # String 类型数据方法
 └─ vue                                    # demo for vue
 
