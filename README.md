@@ -62,6 +62,7 @@ daily_demo
 └─ vue                                    # demo for vue
    ├─ favicon.ico                         # 浏览器页签图标-vue
    ├─ vue2
+   │  ├─ DynamicForm                      # 页面表单类型由后端控制（动态表单）
    │  └─ TabWithLoading                   # 选项卡切换附带水波纹loading
    └─ vue3
 

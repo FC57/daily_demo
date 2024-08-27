@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Form</title>
+    <link rel="shortcut icon" href="/vue/favicon.ico" type="image/x-icon" />
+    <!-- script资源提示符，不阻塞主线程 defer-尽快加载，最后执行  async-尽快加载，加载完后执行   -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.8/vue.min.js" defer></script>
+    <style>
+      html {
+        height: 100vh;
+      }
+      body {
+        height: calc(100% - 16px);
+        min-width: 1100px;
+      }
+      #box {
+        display: flex;
+        min-height: 100%;
+        border: 1px solid #e5fe;
+        box-sizing: border-box;
+      }
+      .sideBar {
+        width: 179px;
+        flex: 0 0 180px;
+      }
+      .wrap {
+        height: calc(100% - 22px);
+        border-right: 1px solid #efefef;
+      }
+      ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+      }
+      li:hover {
+        background: #efefef;
+      }
+      li {
+        cursor: pointer;
+        padding: 15px 30px;
+        position: relative;
+        color: #666;
+        font-size: 14px;
+      }
+      li + li::before {
+        display: block;
+        position: absolute;
+        content: '';
+        height: 20px;
+        width: 2px;
+        background: deepskyblue;
+        top: -10px;
+        left: 42px;
+      }
+      li span {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid deepskyblue;
+        margin-right: 10px;
+      }
+      li span.active {
+        background: #0000ff;
+        color: #fff;
+        border: 1px solid transparent;
+      }
+      .content {
+        flex: 1;
+        text-align: center;
+      }
+      .content h4 {
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      .content button {
+        cursor: pointer;
+      }
+      .firstStep,
+      .secondStep,
+      .thirdStep {
+        margin: 20px;
+        font-size: 14px;
+        color: #555;
+      }
+      .firstStep {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .firstStep .group {
+        display: flex;
+        width: 30%;
+        margin: 0 26px 30px 0;
+      }
+      .firstStep .group label {
+        flex: 5;
+        height: 30px;
+        background: #efefef;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 30px;
+        padding: 0 20px;
+      }
+      .firstStep .group .dateInput {
+        flex: 4;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div class="sideBar">
+        <div class="wrap">
+          <ul>
+            <li
+              v-for="(tab,index) in tabList"
+              :key="index"
+              @click="step=index+1;currentStepTitle=tab"
+            >
+              <span :class="{'active':index+1==step}">{{index+1}}</span>
+              {{tab}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <h4>{{currentStepTitle}}</h4>
+        <div class="firstStep" v-show="currentStepTitle=='基本信息'">
+          <div class="group">
+            <label title="是否支持阶段x">是否支持阶段x：</label>
+            <input class="dateInput" type="checkbox" v-model="isSupport" />
+          </div>
+          <div class="group" v-for="dateInput in baseInfo" :key="dateInput.itemCode">
+            <label :title="dateInput.itemAlias">{{dateInput.itemAlias}}:</label>
+            <input
+              v-if="dateInput.type=='Date'"
+              class="dateInput"
+              type="date"
+              v-model="dateInput.itemValue"
+            />
+            <input
+              v-else-if="dateInput.type=='Int'"
+              class="dateInput"
+              type="text"
+              v-model="dateInput.itemValue"
+            />
+            <select v-else class="dateInput" v-model="dateInput.itemValue">
+              <option v-for="option in selectOptions[dateInput.itemCode]" :key="option">
+                {{option}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="secondStep" v-show="currentStepTitle=='阶段x'">
+          <date-calc :options="dateOptions" @update:options="changeDateOptions"></date-calc>
+          <span>{{count}}</span>
+          <button @click="count++">change</button>
+        </div>
+        <div class="thirdStep" v-show="currentStepTitle=='阶段y'">{{isSupport?3:2}}</div>
+        <button v-show="currentStepTitle!='阶段y'" @click="handleNextStep">下一步</button>
+        <button v-show="currentStepTitle=='阶段y'">保存</button>
+      </div>
+    </div>
+    <template id="temp">
+      <div>
+        <select v-model="currentDate">
+          <option v-for="option in cpOptions" :key="option.itemCode">{{option.itemAlias}}</option>
+        </select>
+        <temp-son></temp-son>
+      </div>
+    </template>
+    <template id="son">
+      <div>祖父组件传过来的值：{{grandpaCount}}</div>
+    </template>
+
+    <script>
+      // defer 是预先加载，最后执行，即HTML文档解析完成后执行
+      // 最终的执行顺序是 普通script 执行完后，defer和module的执行是按照书写顺序执行
+
+      console.log(typeof Vue); // undefined
+      console.log(new Date().getTime());
+    </script>
+    <script src="./deferTest.js" defer></script>
+    <script type="module">
+      console.log(typeof Vue); // function
+      console.log(new Date().getTime());
+      import './index.js';
+      console.log(new Date().getTime());
+    </script>
+    <script>
+      console.log(typeof Vue); // undefined
+      console.log(new Date().getTime());
+    </script>
+  </body>
+</html>
