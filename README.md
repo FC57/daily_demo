@@ -12,7 +12,9 @@ Download the Live Server plugin for VSCode
 
 > 特别感谢开源库 CND _BootCDN_：https://www.bootcdn.cn/
 >
-> 日常 demo 不用搭建整个工程， npm 对应包运行
+> ✨ 日常 demo 不用搭建整个工程， npm 对应包运行，直接创建 _html_ 文件引入 开源库 CND，_script_ 脚本中直接使用即可
+>
+> 🚀 若有页面解析加载，引入 CDN 的同时，使用资源提示符 _defer_ - <span style="color:#ff4d4f">\<script src='CDN 地址' defer>\</script></span> 避免加载 JS 导致渲染主线程处于空闲状态
 
 ![BootCDN](./assets/imgs/bootcdn.png)
 
@@ -49,13 +51,16 @@ daily_demo
 │     ├─ text-stroke.html                 # 解决文字阴影锯齿问题
 │     └─ upload-progress.html             # 模拟上传进度展示（进度条、速率、剩余传输预估时间）
 ├─ react                                  # demo for react
-│  └─ data
-│     └─ ag-grid-react-data.html          # 请求后端的数据，转换适配组件ag-grid-react表格所需
+│  ├─ data
+│  │  └─ ag-grid-react-data.html          # 请求后端的数据，转换适配组件ag-grid-react表格所需
+│  └─ favicon.ico                         # 浏览器页签图标-react
 ├─ README.md                              # 记录文档
 ├─ typescript                             # demo for ts
 ├─ utils                                  # 自定义公用方法相关
 │  ├─ index.js                            # 其它类别方法
 │  └─ string.js                           # String 类型数据方法
 └─ vue                                    # demo for vue
+   ├─ favicon.ico                         # 浏览器页签图标-react
+   └─ TabWithLoading                      # 选项卡切换附带水波纹loading
 
 ```

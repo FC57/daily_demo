@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab with loading</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <!-- script资源提示符，不阻塞主线程 defer-尽快加载，最后执行  async-尽快加载，加载完后执行   -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
+    <!-- 
+      link资源提示符 preload 和 prefetch ，仅提前下载，并没有引入，后续引入使用缓存
+      preload优先级>prefetch ，preload 通常本页待使用，prefetch 其它页面用 -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        height: 100vh;
+      }
+      body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #wrap {
+        width: 1200px;
+        height: 660px;
+        border: 2px solid #efefef;
+        border-radius: 10px;
+      }
+      .ripple-loader {
+        width: 48px;
+        height: 48px;
+        position: relative;
+        margin: 260px auto;
+      }
+      .ripple-loader div {
+        border: 3px solid deepskyblue;
+        position: absolute;
+        border-radius: 50%;
+        animation: ripple-loader 1s ease-out infinite;
+      }
+      .ripple-loader div + div {
+        opacity: 0;
+        animation-delay: 0.5s;
+      }
+      @keyframes ripple-loader {
+        from {
+          width: 0;
+          height: 0;
+          left: 24px;
+          top: 24px;
+          opacity: 1;
+        }
+        to {
+          width: 48px;
+          height: 48px;
+          left: 0;
+          top: 0;
+          opacity: 0;
+        }
+      }
+      .header {
+        padding: 14px 40px;
+        background-color: #efefef;
+      }
+      .header .btn {
+        height: 36px;
+        line-height: 16px;
+        width: 120px;
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+        color: #4d4d4d;
+        display: inline-block;
+        box-sizing: border-box;
+        font-size: 13px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .header .btn.active {
+        background-color: #4d4d4d;
+        color: #fff;
+      }
+      .header .btn + .btn {
+        margin-left: 30px;
+      }
+      .content {
+        height: calc(100% - 64px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="header">
+        <div
+          :class="['btn',{'active':c_scenario.name==scenario.name}]"
+          v-for="scenario in paymentScenarioList"
+          :key="scenario.scenarioId"
+          @click="switchScenario(scenario)"
+        >
+          {{scenario.name}}
+        </div>
+      </div>
+      <!-- 水波纹动画 -->
+      <div class="ripple-loader" v-show="loadingShow">
+        <div></div>
+        <div></div>
+      </div>
+      <!-- 内容区域 -->
+      <div class="content" v-show="!loadingShow">{{c_scenario.name}}</div>
+    </div>
+
+    <script type="module">
+      import './index.js';
+    </script>
+  </body>
+</html>
