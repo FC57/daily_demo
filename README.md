@@ -12,7 +12,7 @@ Download the Live Server plugin for VSCode
 
 > 特别感谢开源库 CND _BootCDN_：https://www.bootcdn.cn/
 >
-> ✨ 日常 demo 不用搭建整个工程， npm 对应包运行，直接创建 _html_ 文件引入 开源库 CND，_script_ 脚本中直接使用即可
+> ✨ 日常 demo 不用搭建整个工程， npm 对应包运行，直接创建 _html_ 文件引入 开源库 CDN，_script_ 脚本中直接使用即可
 >
 > 🚀 若有页面解析加载，引入 CDN 的同时，使用资源提示符 _defer_ - <span style="color:#ff4d4f">\<script src='CDN 地址' defer>\</script></span> 避免加载 JS 导致渲染主线程处于空闲状态
 
