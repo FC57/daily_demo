@@ -60,7 +60,9 @@ daily_demo
 │  ├─ index.js                            # 其它类别方法
 │  └─ string.js                           # String 类型数据方法
 └─ vue                                    # demo for vue
-   ├─ favicon.ico                         # 浏览器页签图标-react
-   └─ TabWithLoading                      # 选项卡切换附带水波纹loading
+   ├─ favicon.ico                         # 浏览器页签图标-vue
+   ├─ vue2
+   │  └─ TabWithLoading                   # 选项卡切换附带水波纹loading
+   └─ vue3
 
 ```
