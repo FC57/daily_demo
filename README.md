@@ -60,8 +60,10 @@ daily_demo
 ├─ README.md                              # 记录文档
 ├─ typescript                             # demo for ts
 ├─ utils                                  # 自定义公用方法相关
+│  ├─ fileHandler.js                      # 文件处理相关
 │  ├─ fileWorker.js                       # 文件分片线程通信
 │  ├─ index.js                            # 其它类别方法
+│  ├─ myPromise.js                        # 手写Promise
 │  └─ string.js                           # String 类型数据方法
 └─ vue                                    # demo for vue
    ├─ favicon.ico                         # 浏览器页签图标-vue
