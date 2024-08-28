@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/vue/favicon.ico" type="image/x-icon" />
+    <title>vue3 proxy test</title>
+    <style>
+      p {
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>vue3 响应式手写实现测试</h4>
+    <h5 style="color: #00ff">F12 控制台查看测试输出</h5>
+    <hr />
+
+    <p style="color: #999">【关于 computed】</p>
+    <p>✨ computed 的 getter 需要读取响应式数据</p>
+    <p>
+      ✨ computed 的 getter 只有读取属性 value 且内部的 dirty 状态值为
+      true，才会执行，定义的时候并不会执行
+    </p>
+    <p>
+      🍍 内部的 dirty 状态值初始为 true，读取value时，会触发getter，并收集依赖关系，再将 dirty
+      设为false，缓存计算结果，后续读取的 value 都是缓存结果
+    </p>
+    <p>
+      👆 后续只有getter中依赖的响应式数据发生变化，触发 scheduler 将 dirty 置为 true，下次读取
+      value才会再次触发上一步
+    </p>
+
+    <script type="module">
+      import { reactive } from './core/reactive.js';
+      import { effect } from './core/effect.js';
+      import { ref } from './ref.js';
+      import { computed } from './computed.js';
+      import { watch } from './watch.js';
+
+      // const obj = {};
+      // const arr = [1, 2, obj, 3, 4];
+      // const state = reactive(arr);
+
+      const obj = { a: 1, b: 2 };
+      const state = reactive(obj);
+      const objRef = ref({ f: 'f' });
+      const sum = computed(() => {
+        const res = state.a + state.b;
+        console.log('computed', res);
+        return res;
+      });
+
+      // effect(() => {
+      //   console.log('changed');
+      //   sum.value;
+      // });
+
+      // const sum1 = computed({
+      //   get() {
+      //     const res = state.a + state.b;
+      //     console.log('computed', res);
+      //     return res;
+      //   },
+      //   set(val) {
+      //     console.log(val);
+      //   }
+      // });
+
+      watch(
+        () => state.a,
+        (newVal, oldVal) => {
+          console.log('【new】', newVal, '【old】', oldVal);
+        }
+        // {
+        //   immediate: true
+        // }
+      );
+
+      console.log(sum.value);
+      state.a = 3;
+      // sum.value = 4;
+      console.log(sum.value);
+      console.log(sum.value);
+      // state.b = 3;
+      // console.log(sum.value);
+
+      // effect(() => {
+      //   console.log('render', sum.value);
+      // });
+
+      // sum.value;
+      // sum.value;
+      // sum.value;
+
+      // state.a = 2;
+      // sum.value;
+      // sum.value;
+
+      // function test() {
+      // const res = state.includes(obj);
+      // const res = state.indexOf(obj);
+      // const res = state.lastIndexOf(obj);
+      // console.log(res);
+      // state.push('test');
+      // state.pop();
+      // state.length = 3;
+      // state.length = 100;
+      // state.shift();
+
+      //   console.log(`test a=${state.a}`);
+      //   if (state.a === 1) {
+      //     state.b;
+      //   } else {
+      //     state.c;
+      //   }
+      // }
+      // function test1() {
+      //   // console.log('test1', init.value);
+      //   console.log('test1', objRef.value.f);
+      //   // state.c;
+      //   // for (const key in state) {
+      //   // }
+      //   // effect(() => {
+      //   //   console.log('inner');
+      //   // });
+      // }
+      // let isRun = false;
+      // const fn = effect(test1, {
+      //   lazy: true,
+      //   scheduler(eff) {
+      //     // 放入微队列 这样函数中的值都是最新值
+      //     Promise.resolve().then(() => {
+      //       if (!isRun) {
+      //         isRun = true;
+      //         console.log(fn === eff);
+      //         eff();
+      //       }
+      //     });
+      //   }
+      // });
+      // effect(test1);
+      // fn();
+      // state.a++;
+      // state.a++;
+      // state.a++;
+      // state.a++;
+      // state.c = 3;
+      // console.log(state.a);
+
+      // const newObj = { f: 5 };
+      // objRef.value = 2;
+      // objRef.value = newObj;
+    </script>
+  </body>
+</html>

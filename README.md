@@ -63,7 +63,7 @@ daily_demo
 │  ├─ fileHandler.js                      # 文件处理相关
 │  ├─ fileWorker.js                       # 文件分片线程通信
 │  ├─ index.js                            # 其它类别方法
-│  ├─ myPromise.js                        # 手写Promise
+│  ├─ myPromise.js                        # 手写实现Promise构造函数
 │  └─ string.js                           # String 类型数据方法
 └─ vue                                    # demo for vue
    ├─ favicon.ico                         # 浏览器页签图标-vue
@@ -71,5 +71,18 @@ daily_demo
    │  ├─ DynamicForm                      # 页面表单类型由后端控制（动态表单）
    │  └─ TabWithLoading                   # 选项卡切换附带水波纹loading
    └─ vue3
+      └─ vueProxy                         # 手写实现 vue3 响应式核心
+         ├─ core
+         │  ├─ effect.js                  # watchEffect 核心，收集响应式数据和用到它们的函数的关联
+         │  ├─ handler.js                 # 响应式数据处理代理操作 get、set、deleteProperty、has、ownKeys
+         │  └─ reactive.js                # 利用 Proxy 递归代理，将数据变为响应式
+         ├─ types
+         │  └─ operationType.js           # 响应式数据操作类型
+         ├─ utils
+         │  └─ index.js                   # 判断是否为对象和值是否变更
+         ├─ computed.js                   # 实现 computed
+         ├─ ref.js                        # 实现 ref
+         ├─ test.html
+         └─ watch.js                      # 实现 watch
 
 ```
