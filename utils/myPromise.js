@@ -1,3 +1,5 @@
+import { runMicroTask } from './index.js';
+
 /**
  * 判断数据是否是Promise
  * * Promise A+ 规范，只要对象中有then方法就是Promise
