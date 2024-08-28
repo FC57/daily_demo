@@ -26,6 +26,8 @@ daily_demo
 │  ├─ imgs
 │  └─ video
 ├─ dependent_libraries                    # 第三方库demo
+│  ├─ node_modules
+│  │  └─ spark-md5.js                     # spark-md5（公共方法里需要导入，不能用CDN，因此罗列）
 │  ├─ bignumber.html                      # bignumber.js-解决js运算精度丢失问题
 │  ├─ dayjs.html                          # dayjs-日期相关计算
 │  ├─ index.less                          # less-样式css工程化，webpack中less-loader转换为css
@@ -43,6 +45,7 @@ daily_demo
 │     ├─ file-suffix.html                 # 后端响应头中 attachment 中通过正则截取文件后缀名
 │     ├─ inaccurate-timing.html           # 解决页面失活导致计时不准问题
 │     ├─ indexedDB.html                   # 浏览器存储-indexedDB，存储大量结构化数据
+│     ├─ largeFile-chunks.html            # 大文件，开启多线程分片
 │     ├─ layout-grid.html                 # grid 布局
 │     ├─ lorem.html                       # Vscode 插件-Chinese Lorem，生成指定长度随机汉字
 │     ├─ mimeticStyle.html                # 拟态风格页签（tab-按压）
@@ -57,6 +60,7 @@ daily_demo
 ├─ README.md                              # 记录文档
 ├─ typescript                             # demo for ts
 ├─ utils                                  # 自定义公用方法相关
+│  ├─ fileWorker.js                       # 文件分片线程通信
 │  ├─ index.js                            # 其它类别方法
 │  └─ string.js                           # String 类型数据方法
 └─ vue                                    # demo for vue

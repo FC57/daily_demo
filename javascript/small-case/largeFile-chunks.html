@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File-chunks</title>
+    <style>
+      h5 {
+        color: #00ff;
+      }
+      .largeFile {
+        font-size: 14px;
+        margin: 60px 20px 0;
+        display: flex;
+      }
+      .largeFile .selectFile {
+        padding: 6px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        user-select: none;
+        color: #555;
+        background-image: linear-gradient(to right, #fca, skyblue);
+      }
+      .largeFile .selectFile:hover {
+        color: #fff;
+        box-shadow: 0 0 20px #fac;
+      }
+      .largeFile input[type='file'] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>开启多线程，实现大文件分片</h4>
+    <h5>■ 利用Worker开启多线程</h5>
+    <h5>■ 利用算法库 spark-md5 计算chunk hash</h5>
+    <h5>■ 分片结果 F12 查看控制台</h5>
+    <hr />
+
+    <div class="largeFile">
+      <div class="selectFile">选择文件</div>
+      <input type="file" />
+    </div>
+
+    <script type="module">
+      import { getLargeFileSharding } from '/utils/index.js';
+
+      const $ = document.querySelector.bind(document);
+
+      const fileInput = $(".largeFile input[type='file']");
+      const fileSelector = $('.selectFile');
+      fileInput.onchange = async e => {
+        // 每个分片 5 M
+        const result = await getLargeFileSharding(e.target.files[0], 5);
+        console.log(result);
+        e.target.value = '';
+      };
+      fileSelector.onclick = () => {
+        fileInput.click();
+      };
+    </script>
+  </body>
+</html>
