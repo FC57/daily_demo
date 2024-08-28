@@ -76,3 +76,25 @@ export function runMicroTask(callback) {
   }
   setTimeout(callback, 0);
 }
+
+/**
+ * 科里化函数
+ * * 在函数编程中，作用是把多参函数变为单参函数
+ * @param {Function} fun 函数
+ * @param {*} that 函数this
+ * @param {*} args 剩余参数（或固定参数）数组
+ */
+export function curry(fun, that, ...args) {
+  return function () {
+    // 参数总量 = 当前参数 + 固定参数
+    const params = [...args, ...arguments];
+    if (params.length >= fun.length) {
+      // 参数够了就调用
+      return fun.apply(that, params);
+    } else {
+      // 继续固定参数
+      params.unshift(fun, that);
+      return curry.apply(null, params);
+    }
+  };
+}
