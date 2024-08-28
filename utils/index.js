@@ -72,8 +72,8 @@ export function getLargeFileSharding(file, chunkSize) {
       const startIndex = handleCount * i;
       // 若开始索引超范围，不用开启线程，直接跳过
       if (startIndex > chunkLength - 1) {
-        finished++;
-        continue;
+        finished += maxWorker - i;
+        break;
       }
       // 处理切片结束索引
       let endIndex = startIndex + handleCount;
