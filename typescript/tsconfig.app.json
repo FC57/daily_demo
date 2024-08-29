@@ -1,0 +1,15 @@
+// 浏览器环境
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json", // 继承配置，该地址为基于 vite 搭建的 vue3项目
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types/auto-imports.d.ts"],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true, // 子项必须配置，表示这是一个复合项目，允许 TypeScript 生成 .tsbuildinfo 文件来存储编译状态
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // 指定增量编译时生成的 .tsbuildinfo 文件的位置
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

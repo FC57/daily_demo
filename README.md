@@ -10,13 +10,23 @@ Download the Live Server plugin for VSCode
 
 ### Open source library CDN
 
-> 特别感谢开源库 CND _BootCDN_：https://www.bootcdn.cn/
+Special thanks to the open-source library CDN BootCDN
+
+> 特别感谢开源库 CDN _BootCDN_：https://www.bootcdn.cn/
 >
 > ✨ 日常 demo 不用搭建整个工程， npm 对应包运行，直接创建 _html_ 文件引入 开源库 CDN，_script_ 脚本中直接使用即可
 >
 > 🚀 若有页面解析加载，引入 CDN 的同时，使用资源提示符 _defer_ - <span style="color:#ff4d4f">\<script src='CDN 地址' defer>\</script></span> 避免加载 JS 导致渲染主线程处于空闲状态
 
 ![BootCDN](./assets/imgs/bootcdn.png)
+
+### for typescript
+
+The browser does not recognize TS files and can only view them in VSCode
+
+> 🌐 浏览器不支持 _typescript_ 文件，只会将其视为文件进行下载行为，需要下载 _typecript_ 包，用其自带的 _tsc_ 命名行工具编译成 _js_ 文件才行
+>
+> 🟢 因此只能在 VSCode 中查看
 
 ### file tree
 
@@ -59,6 +69,10 @@ daily_demo
 │  └─ favicon.ico                         # 浏览器页签图标-react
 ├─ README.md                              # 记录文档
 ├─ typescript                             # demo for ts
+│  ├─ tsconfig.app.json                   # 浏览器环境 ts 配置
+│  ├─ tsconfig.json                       # 项目 ts 配置
+│  ├─ tsconfig.node.json                  # node 环境 ts 配置
+│  └─ types                               # 类型文件
 ├─ utils                                  # 自定义公用方法相关
 │  ├─ fileHandler.js                      # 文件处理相关
 │  ├─ fileWorker.js                       # 文件分片线程通信
