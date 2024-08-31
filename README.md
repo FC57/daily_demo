@@ -8,7 +8,7 @@
 
 <br/>
 
-### preview
+### Preview
 
 Download the Live Server plugin for VSCode
 
@@ -28,13 +28,21 @@ Special thanks to the open-source library CDN BootCDN
 
 ![BootCDN](./assets/imgs/bootcdn.png)
 
-### for typescript
+### For typescript
 
 The browser does not recognize ts files but can view them in VSCode
 
 > 🌐 浏览器不支持 _typescript_ 文件，只会将其视为文件触发下载行为，需要下载 _typecript_ 包，用其自带的 _tsc_ 命名行工具编译成 _js_ 文件才行
 >
-> 🍍 因 VSCode 本身对 typescript 语法的支持及高亮显示，因此可直接在 VSCode 中查看文件
+> 💡 因 VSCode 本身对 typescript 语法的支持及高亮显示，因此可直接在 VSCode 中查看文件
+
+### Standardized submission
+
+Standardize Git commit message using husky, commitlint, commmitizen,and cz-git
+
+> 📋 使用 _husky_、_commitlint_、_commitizen_、_cz-git_ 在终端中添加交互式信息提交导航，以规范 _git_ 提交信息
+
+![commit](./assets/imgs/types-commit.gif)
 
 ### file tree
 

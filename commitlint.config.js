@@ -63,9 +63,9 @@ module.exports = {
       footerPrefixesSelect: 'Select the ISSUES type of changeList by this change (optional):',
       customFooterPrefix: 'Input ISSUES prefix:',
       footer: 'List any ISSUES by this change. E.g.: #31, #34:\n',
-      generatingByAI: 'Generating your AI commit subject...',
-      generatedSelectByAI: 'Select suitable subject by AI generated:',
       confirmCommit: 'Are you sure you want to proceed with the commit above?'
+      // generatingByAI: 'Generating your AI commit subject...',
+      // generatedSelectByAI: 'Select suitable subject by AI generated:',
       // 中文版
       // type: "选择你要提交的类型 :",
       // scope: "选择一个提交范围（可选）:",
@@ -120,7 +120,7 @@ module.exports = {
       { value: 'revert', name: 'revert:   ⏪️  Reverts a previous commit', emoji: '⏪️' },
       { value: 'wip', name: 'wip:      🕔  work in process', emoji: '🕔' },
       { value: 'workflow', name: 'workflow: 📋  workflow improvements', emoji: '📋' },
-      { value: 'type', name: 'type:     🔰  type definition file changes', emoji: '🔰' }
+      { value: 'types', name: 'types:     🔰  type definition file changes', emoji: '🔰' }
     ],
     useEmoji: true, // 使用表情符
     scopes: [...scopes] // 提交范围
