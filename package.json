@@ -1,0 +1,30 @@
+{
+  "name": "daily_demo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "🕖 daily demo for html/css、javascript、typescript、vue、react",
+  "author": {
+    "name": "Franky_57",
+    "url": "https://github.com/FC57/daily_demo.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "release": "standard-version",
+    "commit": "git pull && git add -A && git-cz && npm run push",
+    "push": "git push & git push github master"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.4",
+    "husky": "8.0.1",
+    "standard-version": "^9.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}

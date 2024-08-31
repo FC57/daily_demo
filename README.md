@@ -1,5 +1,13 @@
 # Daily_Demo
 
+<br/>
+
+![daily_demo](https://img.shields.io/badge/%F0%9F%8E%89_welcome_to-daily__demo-blue)
+
+![nodejs](https://img.shields.io/badge/node-v18.14.2-brightgreen?logo=nodedotjs) ![pnpm](https://img.shields.io/badge/pnpm-v9.4.0-brightgreen?logo=pnpm) ![ts](https://img.shields.io/badge/typescript-v4.9.5-blue?logo=typescript) ![vue](https://img.shields.io/badge/vue-v2.7.8_|_v3_+-blue?logo=vuedotjs) ![react](https://img.shields.io/badge/react-v18_+-eee?logo=react) ![html](https://img.shields.io/badge/html-fff?logo=html5) ![css](https://img.shields.io/badge/css-fff?logo=css3&logoColor=blue) ![js](https://img.shields.io/badge/javascript-fff?logo=javascript&logoColor=blue)
+
+<br/>
+
 ### preview
 
 Download the Live Server plugin for VSCode
@@ -22,16 +30,20 @@ Special thanks to the open-source library CDN BootCDN
 
 ### for typescript
 
-The browser does not recognize TS files and can only view them in VSCode
+The browser does not recognize ts files but can view them in VSCode
 
-> 🌐 浏览器不支持 _typescript_ 文件，只会将其视为文件进行下载行为，需要下载 _typecript_ 包，用其自带的 _tsc_ 命名行工具编译成 _js_ 文件才行
+> 🌐 浏览器不支持 _typescript_ 文件，只会将其视为文件触发下载行为，需要下载 _typecript_ 包，用其自带的 _tsc_ 命名行工具编译成 _js_ 文件才行
 >
-> 🟢 因此只能在 VSCode 中查看
+> 🍍 因 VSCode 本身对 typescript 语法的支持及高亮显示，因此可直接在 VSCode 中查看文件
 
 ### file tree
 
 ```text
 daily_demo
+├─ .husky                                 # 定义在git提交的指定钩子中额外执行脚本
+│  ├─ commit-msg                          # 提交信息 git commit 时触发的钩子
+│  └─ _
+│     └─ husky.sh
 ├─ assets                                 # 资源文件
 │  ├─ imgs
 │  └─ video
@@ -63,6 +75,9 @@ daily_demo
 │     ├─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
 │     ├─ text-stroke.html                 # 解决文字阴影锯齿问题
 │     └─ upload-progress.html             # 模拟上传进度展示（进度条、速率、剩余传输预估时间）
+├─ LICENSE                                # 开源协议 MIT
+├─ package.json                           # 包管理文件
+├─ pnpm-lock.yaml                         # pnpm 下载包的版本锁定文件
 ├─ react                                  # demo for react
 │  ├─ data
 │  │  └─ ag-grid-react-data.html          # 请求后端的数据，转换适配组件ag-grid-react表格所需
@@ -98,5 +113,103 @@ daily_demo
          ├─ ref.js                        # 实现 ref
          ├─ test.html
          └─ watch.js                      # 实现 watch
+
+```
+
+```
+daily_demo
+├─ .husky
+│  ├─ commit-msg
+│  └─ _
+│     └─ husky.sh
+├─ assets
+│  ├─ imgs
+│  │  ├─ 0.png
+│  │  ├─ 1.png
+│  │  ├─ 2.png
+│  │  ├─ 3.png
+│  │  ├─ 4.png
+│  │  ├─ 5.png
+│  │  ├─ 6.png
+│  │  ├─ 7.png
+│  │  ├─ 8.png
+│  │  ├─ 9.png
+│  │  ├─ ag-grid-react.png
+│  │  ├─ ag-grid-react.tsx.png
+│  │  ├─ bootcdn.png
+│  │  ├─ t1.png
+│  │  └─ vscode-live-server-extension.png
+│  └─ video
+│     └─ winter.mp4
+├─ commitlint.config.js
+├─ dependent_libraries
+│  ├─ bignumber.html
+│  ├─ dayjs.html
+│  ├─ index.less
+│  └─ nprogress.html
+├─ javascript
+│  ├─ game-maze
+│  │  └─ index.html
+│  ├─ pseudo-code
+│  │  └─ commonjs-require.js
+│  └─ small-case
+│     ├─ adaptation.html
+│     ├─ canvas.html
+│     ├─ countdown.html
+│     ├─ dragbleApi.html
+│     ├─ file-suffix.html
+│     ├─ inaccurate-timing.html
+│     ├─ indexedDB.html
+│     ├─ largeFile-chunks.html
+│     ├─ layout-grid.html
+│     ├─ lorem.html
+│     ├─ mimeticStyle.html
+│     ├─ scrollingNotice.html
+│     ├─ strBytes.html
+│     ├─ text-stroke.html
+│     └─ upload-progress.html
+├─ LICENSE
+├─ package.json
+├─ pnpm-lock.yaml
+├─ react
+│  ├─ data
+│  │  └─ ag-grid-react-data.html
+│  └─ favicon.ico
+├─ README.md
+├─ typescript
+│  ├─ tsconfig.app.json
+│  ├─ tsconfig.json
+│  ├─ tsconfig.node.json
+│  └─ types
+├─ utils
+│  ├─ fileHandler.js
+│  ├─ fileWorker.js
+│  ├─ index.js
+│  ├─ myPromise.js
+│  └─ string.js
+└─ vue
+   ├─ favicon.ico
+   ├─ vue2
+   │  ├─ DynamicForm
+   │  │  ├─ deferTest.js
+   │  │  ├─ index.html
+   │  │  └─ index.js
+   │  └─ TabWithLoading
+   │     ├─ index.html
+   │     └─ index.js
+   └─ vue3
+      └─ vueProxy
+         ├─ computed.js
+         ├─ core
+         │  ├─ effect.js
+         │  ├─ handler.js
+         │  └─ reactive.js
+         ├─ ref.js
+         ├─ test.html
+         ├─ types
+         │  └─ operationType.js
+         ├─ utils
+         │  └─ index.js
+         └─ watch.js
 
 ```
