@@ -95,6 +95,8 @@ daily_demo
 │  ├─ tsconfig.app.json                   # 浏览器环境 ts 配置
 │  ├─ tsconfig.json                       # 项目 ts 配置
 │  ├─ tsconfig.node.json                  # node 环境 ts 配置
+│  ├─ type_tool                           # 自定义类型工具
+│  │  └─ index.d.ts                       # 实现 Record、Exclude、Extract、Pick、Omit、Partial、Required
 │  └─ types                               # 类型文件
 ├─ utils                                  # 自定义公用方法相关
 │  ├─ fileHandler.js                      # 文件处理相关
