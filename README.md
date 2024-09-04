@@ -83,6 +83,8 @@ daily_demo
 │     ├─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
 │     ├─ text-stroke.html                 # 解决文字阴影锯齿问题
 │     └─ upload-progress.html             # 模拟上传进度展示（进度条、速率、剩余传输预估时间）
+├─ commitlint.config.js                   # commitlint、cz-git 配置文件（规范和校验提交信息）
+├─ .gitignore                             # 提交忽略文件
 ├─ LICENSE                                # 开源协议 MIT
 ├─ package.json                           # 包管理文件
 ├─ pnpm-lock.yaml                         # pnpm 下载包的版本锁定文件
