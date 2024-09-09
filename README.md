@@ -49,7 +49,7 @@ In this demo, run the ts file and the following script can be executed
 > 🧩 该案例中，可运行如下终端命令，执行 ts 文件，其中 _typescript/index.ts_ 可替换为执行文件路径
 
 ```bash
-# 'typescript/index. ts' can be replaced with the executable file path
+# 'typescript/index.ts' can be replaced with the executable file path
 
 pnpm ts typescript/index.ts
 ```
