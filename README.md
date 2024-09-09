@@ -4,7 +4,7 @@
 
 ![daily_demo](https://img.shields.io/badge/%F0%9F%8E%89_welcome_to-daily__demo-blue)
 
-![nodejs](https://img.shields.io/badge/node-v18.14.2-brightgreen?logo=nodedotjs) ![pnpm](https://img.shields.io/badge/pnpm-v9.4.0-brightgreen?logo=pnpm) ![ts](https://img.shields.io/badge/typescript-v4.9.5-blue?logo=typescript) ![vue](https://img.shields.io/badge/vue-v2.7.8_|_v3_+-blue?logo=vuedotjs) ![react](https://img.shields.io/badge/react-v18_+-eee?logo=react) ![html](https://img.shields.io/badge/html-fff?logo=html5) ![css](https://img.shields.io/badge/css-fff?logo=css3&logoColor=blue) ![js](https://img.shields.io/badge/javascript-fff?logo=javascript&logoColor=blue)
+![nodejs](https://img.shields.io/badge/node-v18.14.2-brightgreen?logo=nodedotjs) ![pnpm](https://img.shields.io/badge/pnpm-v9.4.0-brightgreen?logo=pnpm) ![ts](https://img.shields.io/badge/typescript-v5.5.4-blue?logo=typescript) ![vue](https://img.shields.io/badge/vue-v2.7.8_|_v3_+-blue?logo=vuedotjs) ![react](https://img.shields.io/badge/react-v18_+-eee?logo=react) ![html](https://img.shields.io/badge/html-fff?logo=html5) ![css](https://img.shields.io/badge/css-fff?logo=css3&logoColor=blue) ![js](https://img.shields.io/badge/javascript-fff?logo=javascript&logoColor=blue)
 
 <br/>
 
@@ -34,13 +34,40 @@ The browser does not recognize ts files but can view them in VSCode
 
 > 🌐 浏览器不支持 _typescript_ 文件，只会将其视为文件触发下载行为，需要下载 _typecript_ 包，用其自带的 _tsc_ 命名行工具编译成 _js_ 文件才行
 >
-> 💡 因 VSCode 本身对 typescript 语法的支持及高亮显示，因此可直接在 VSCode 中查看文件
+> 💡 因 VSCode 本身对 typescript 语法的支持及高亮显示，因此可直接在 VSCode 中查看文件。执行 ts 文件，可使用库 _ts-node_，执行即 `npx ts-node 文件名`，若全局安装了 _ts-node_ 可省略 npx
+
+- install
+
+```bash
+pnpm install
+```
+
+In this demo, run the ts file and the following script can be executed
+
+> 🧩 该案例中，可运行如下终端命令，执行 ts 文件，其中 _typescript/index.ts_ 可替换为执行文件路径
+
+```bash
+# 'typescript/index. ts' can be replaced with the executable file path
+
+pnpm ts typescript/index.ts
+```
 
 ### Standardized submission
 
 Standardize Git commit message using husky, commitlint, commmitizen,and cz-git
 
 > 📋 使用 _husky_、_commitlint_、_commitizen_、_cz-git_ 在终端中添加交互式信息提交导航，以规范 _git_ 提交信息
+
+- commit
+
+```bash
+# pnpm
+pnpm commit
+
+# npm
+npm run commit
+
+```
 
 ![commit](./assets/imgs/types-commit.gif)
 
@@ -83,23 +110,28 @@ daily_demo
 │     ├─ strBytes.html                    # 通过码元获取字符真实长度并计算所占字节数
 │     ├─ text-stroke.html                 # 解决文字阴影锯齿问题
 │     └─ upload-progress.html             # 模拟上传进度展示（进度条、速率、剩余传输预估时间）
-├─ commitlint.config.js                   # commitlint、cz-git 配置文件（规范和校验提交信息）
+├─ commitlint.config.cjs                  # commitlint、cz-git 配置文件（规范和校验提交信息）
 ├─ .gitignore                             # 提交忽略文件
 ├─ LICENSE                                # 开源协议 MIT
 ├─ package.json                           # 包管理文件
 ├─ pnpm-lock.yaml                         # pnpm 下载包的版本锁定文件
+├─ main.ts                                # pnpm ts main.ts 测试ts文件执行
 ├─ react                                  # demo for react
 │  ├─ data
 │  │  └─ ag-grid-react-data.html          # 请求后端的数据，转换适配组件ag-grid-react表格所需
 │  └─ favicon.ico                         # 浏览器页签图标-react
 ├─ README.md                              # 记录文档
 ├─ typescript                             # demo for ts
+│  ├─ constant                            # 常量文件
+│  ├─ scripts
+│  │  └─ ts-node.ts                       # process.argv.slice(2) 获取脚本参数，ts-node 执行ts文件
 │  ├─ tsconfig.app.json                   # 浏览器环境 ts 配置
 │  ├─ tsconfig.json                       # 项目 ts 配置
 │  ├─ tsconfig.node.json                  # node 环境 ts 配置
 │  ├─ type_tool                           # 自定义类型工具
 │  │  └─ index.d.ts                       # 实现 Record、Exclude、Extract、Pick、Omit、Partial、Required
-│  └─ types                               # 类型文件
+│  ├─ types                               # 类型文件
+│  └─ index.ts                            # Awaited<T> 获取Promise返回类型
 ├─ utils                                  # 自定义公用方法相关
 │  ├─ fileHandler.js                      # 文件处理相关
 │  ├─ fileWorker.js                       # 文件分片线程通信

@@ -17,11 +17,7 @@ export declare function sortRandom(arr: any[]): Array<any>;
  * @param {number} to 截至数
  * @param {boolean} isInteger 是否整数
  */
-export declare function getRandomNumberFromTo(
-  from: number,
-  to: number,
-  isInteger: boolean = true
-): number;
+export declare function getRandomNumberFromTo(from: number, to: number, isInteger: boolean): number;
 
 /**
  * 将任务放入微队列执行

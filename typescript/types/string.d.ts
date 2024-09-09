@@ -24,4 +24,4 @@ export declare function pointSlice(str: string, start: number, end: number): str
  * @param str {string} 字符串
  * @param isCodePointLen {boolean} 是否通过码点计算的长度，默认为true
  */
-export declare function getStringBytes(str: string, isCodePointLen: boolean = true): number;
+export declare function getStringBytes(str: string, isCodePointLen: boolean): number;

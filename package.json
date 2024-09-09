@@ -7,8 +7,11 @@
     "name": "Franky_57",
     "url": "https://github.com/FC57/daily_demo.git"
   },
+  "type": "module",
   "license": "MIT",
   "scripts": {
+    "ts:index": "npm run ts typescript/index.ts",
+    "ts": "ts-node --esm typescript/scripts/ts-node.ts --project typescript/tsconfig.json",
     "prepare": "husky install",
     "release": "standard-version",
     "commit": "git pull && git add -A && git-cz && npm run push",
@@ -17,10 +20,13 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
+    "@types/node": "^22.5.4",
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
     "husky": "8.0.1",
-    "standard-version": "^9.5.0"
+    "standard-version": "^9.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   },
   "config": {
     "commitizen": {

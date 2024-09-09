@@ -1,5 +1,5 @@
 {
-  "files": [], // 指定编译的特定文件
+  // "files": [], // 指定编译的特定文件
   // 编译选项
   "compilerOptions": {
     // 校验相关
@@ -34,12 +34,17 @@
   },
   // 更精细的控制，指定项目间的依赖关系，明确主项目依赖于哪些子项目或模块，帮助 TypeScript 确定编译顺序，确保依赖项先编译
   // 实现增量编译，提升效率
-  "references": [
-    {
-      "path": "./tsconfig.node.json" // node 环境
-    },
-    {
-      "path": "./tsconfig.app.json" // 浏览器环境
-    }
-  ]
+  // "references": [
+  //   {
+  //     "path": "./tsconfig.node.json" // node 环境
+  //   },
+  //   {
+  //     "path": "./tsconfig.app.json" // 浏览器环境
+  //   }
+  // ],
+
+  // ts-node 相关配置
+  "ts-node": {
+    "esm": true
+  }
 }
