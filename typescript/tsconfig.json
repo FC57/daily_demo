@@ -1,39 +1,83 @@
 {
+  // "extends":[], // 指定继承配置
   // "files": [], // 指定编译的特定文件
   // 编译选项
   "compilerOptions": {
-    // 校验相关
+    // 1、【语言与环境 Language and Environment】
+    "target": "ES2016", // 编译目标代码的版本标准，默认值 es3
+    "lib": ["esnext", "dom"], // ts需要引入的库，即类型申明文件，在TypeScript源码的lib目录下查看具体内容
+    "jsx": "preserve", // 指定自定义的 JSX 工厂函数库，用于处理 JSX 代码的转换：react（react@18以下）;react-jsx（react@18）
+    /**
+     * jsx 不同取值用法
+     * preserve：适用于需要将JSX处理委托给其他工具（Babel）的场景
+     * react：转换成.js文件，将 JSX 语法转换成React.createElement，源代码必须导入react，适用于 react16及更早版本
+     * react-jsx：适用于 react17及以上版本，JSX 语法不会转换成React.createElement，源代码不用导入react，而是自动从react包中导入特殊函数并调用
+     */
+    "jsxImportSource": "vue", // 保留 JSX 代码，不进行转换。这通常用于与 Babel 等工具链配合使用，一般vue中使用
+    // "useDefineForClassFields": false // 控制类字段的编译方式，指定是否使用 define 语法，确保类字段的行为符合最新的 ECMAScript 标准，默认值：target>=2022 true，其他默认false
+    // "noLib":true, // 禁止包含任何库文件，包括默认的 lib.d.ts，默认值为 false
+    // "experimentalDecorators":true, // 启用对装饰器的实验性支持，默认 false
+    // "emitDecoratorMetadata":true, // 启用对类型元数据reflect-metadata的支持，默认 false
+
+    // 2、【类型检查 Type Checking】
     "strict": true, // 启用所有严格类型检查
+    // -- start
     // "alwaysStrict" :false,// 启用严格模式，为每个文件添加 "use strict"
     // "noImplicitAny": false, // 禁止隐式的 any 类型
-    "strictNullChecks": true, // 确保处理 null 和 undefined，减少潜在的运行时错误
-    // "strictFunctionTypes": false,// 确保函数参数和返回值类型严格匹配
-    "strictBindCallApply": true, // 确保 bind、call 和 apply 的参数符合函数签名的要求
-    "strictPropertyInitialization": true, // 防止类属性在实例化时未被正确初始化
     "noImplicitThis": false, // 确保 this 的使用有明确的类型声明
+    "strictBindCallApply": true, // 确保 bind、call 和 apply 的参数符合函数签名的要求
+    "strictNullChecks": true, // 确保处理 null 和 undefined，减少潜在的运行时错误
+    "strictPropertyInitialization": true, // 防止类属性在实例化时未被正确初始化
+    // "strictFunctionTypes": false,// 确保函数参数和返回值类型严格匹配
+    // "useUnknownInCatchVariables":false, // 默认 catch 子句变量为unknown，而不是any。
+    // --end 上面的8个配置，会跟随 strict:true 自动开启
 
-    // 模块解析相关
-    "noEmit": true, // 用于仅进行类型检查而不生成输出文件，比如在测试代码时
-    "allowImportingTsExtensions": true, // 允许在 import 语句中使用 .ts 和 .tsx 扩展名
     "noUnusedLocals": true, // 禁止存在未使用的局部变量
     "noUnusedParameters": true, // 禁止存在未使用的函数参数
     // "noFallthroughCasesInSwitch": false, // 防止在 switch 语句中遗漏 break 语句，从而减少潜在的逻辑错误
 
-    "skipLibCheck": true, // 跳过库文件的类型检查
-    "target": "ES2016", // 编译目标代码的版本标准
-    "module": "ESNext", // 编译结果的模块化标准
+    // 3、【模块相关 Module】
+    "module": "ESNext", // 编译结果的模块化标准，如果target设置为ES3或者ES5，默认为CommonJS
     "moduleResolution": "Bundler", // 模块解析的模式，Node - node查找策略；bundler - ts@4.7+推荐使用，与打包工具(webpack、esbuild、rollup)配合
-    "lib": ["esnext", "dom"], // 编译时包含的库文件
+    // 路径映射，一般用来和打包工具一起定义路径别名
+    //  paths定义的路径映射并不会影响到编译之后的js文件，这个定义仅仅会阻止TypeScript报错，因为tsc编译器并不会处理模块说明符（也就是from "xxxx"）里面的内容
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true, // 允许导入 JSON 文件作为模块
-    "esModuleInterop": true, // 允许与CommonJS模块互操作
+    // 需要设置noEmit或者emitDeclarationOnly为true
+    "allowImportingTsExtensions": true, // 允许在 import 语句中使用 .ts 和 .tsx 扩展名
+    // "baseUrl": "./", // 设置解析非相对路径模块的基础地址，默认是当前目录，这里./的路径是相对于tsconfig文件的地址的
+
+    // 4、【互操作约束 Interop Constraints】
+    "esModuleInterop": true, // 允许与CommonJS模块和Es module互操作，如果module是node16或nodenext，默认开启
     "isolatedModules": true, // 确保 TypeScript 编译器和 Babel（或其他类似工具）之间的兼容性，特别是在使用单独编译模块时
-    "jsx": "preserve", // 指定自定义的 JSX 工厂函数库，用于处理 JSX 代码的转换：react（react@18以下）;react-jsx（react@18）
-    "jsxImportSource": "vue" // 保留 JSX 代码，不进行转换。这通常用于与 Babel 等工具链配合使用
-    // "forceConsistentCasingInFileNames": false // 强制文件名一致性
-    // "useDefineForClassFields": false // 控制类字段的编译方式，指定是否使用 define 语法，确保类字段的行为符合最新的 ECMAScript 标准
+    // 当esModuleInterop:true时默认开启为true
+    "allowSyntheticDefaultImports": true, // 允许commonjs没有默认导出的代码使用ESM的默认导出行为
+    // "forceConsistentCasingInFileNames":true, // 引入模块文件时的文件名必须与文件系统中的文件名大小写一致
+
+    // 5、【生成文件，影响编译结果 Emit】
+    "noEmit": true, // 用于仅进行类型检查而不生成输出文件，比如在测试代码时
+    "removeComments": true, // 编译后的 .js 文件中删除注释
+    // "declaration":true, // 生成类型声明文件.d.ts
+    // "emitDeclarationOnly":false, 只生成类型声明文件.d.ts，不生成.js文件
+    // "declarationMap":true,// 为.d.ts文件创建源映射
+    // "outDir":null, // 指定输出目录，未指定默认为编译文件的同目录
+
+    // 6、【js 支持 Support js】
+    "allowJs": true, // 允许使用js文件
+    // "checkJs":true, // js 文件也进行类型检查
+
+    // 7、【其它 Other】
+    "skipLibCheck": true // 跳过库文件的类型检查
   },
+  // 指定编译的文件或目录
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types/auto-imports.d.ts"],
+  // 指定编译器需要排除的文件或文件夹，默认值 node_modules，bower_components，jspm_packages，outDir配置的对应目录
+  "exclude": ["src/**/__tests__/*"],
+
   // 更精细的控制，指定项目间的依赖关系，明确主项目依赖于哪些子项目或模块，帮助 TypeScript 确定编译顺序，确保依赖项先编译
-  // 实现增量编译，提升效率
+  // 实现增量编译，提升效率，通常用于前后端部署在一起，且后端基于 node 开发时配置
   // "references": [
   //   {
   //     "path": "./tsconfig.node.json" // node 环境
