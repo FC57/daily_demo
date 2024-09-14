@@ -128,7 +128,7 @@ daily_demo
 
 ```
 
-## 参与贡献
+## How to Contribute
 
 If you are interested, you can share the problems and solutions you encounter in your daily work, or simply provide demos that interest you. Thank you 💖
 
@@ -140,6 +140,6 @@ If you are interested, you can share the problems and solutions you encounter in
 
 - Sharing can be done through PR, issue comments, links, etc
 
-## 使用的协议
+## License
 
 MIT
