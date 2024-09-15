@@ -20,8 +20,7 @@ export declare function getStrAt(str: string, idx: number): string | undefined;
 export declare function pointSlice(str: string, start: number, end: number): string;
 
 /**
- * charCodeAt统计字符串所占字节数
+ * codePointAt统计字符串所占字节数（UTF-8）
  * @param str {string} 字符串
- * @param isCodePointLen {boolean} 是否通过码点计算的长度，默认为true
  */
-export declare function getStringBytes(str: string, isCodePointLen: boolean): number;
+export declare function getUTF8ByteByCodePoint(str: string): number;
