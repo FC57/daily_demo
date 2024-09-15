@@ -14,7 +14,9 @@
   </head>
   <body>
     <h4>ag-grid-react 的 AgGridReact 组件数据适配</h4>
-    <h5 style="color: #00ff">后端返回数据转换</h5>
+    <h5 style="color: #00ff">
+      后端返回数据转换（表格表头不固定、数据不固定，避免卡顿，使用了上述组件）
+    </h5>
     <hr />
     <img src="/assets/imgs/ag-grid-react.png" alt="" />
     <img src="/assets/imgs/ag-grid-react.tsx.png" alt="" />
@@ -28,10 +30,10 @@
           { itemName: 'balance', itemValue: '规模' }
         ],
         trustIdNames: [
-          { id: 1, trustName: '债券1' },
-          { id: 2, trustName: '债券2' },
-          { id: 3, trustName: '债券3' },
-          { id: 4, trustName: '债券4' }
+          { id: 1, trustName: '数据-1' },
+          { id: 2, trustName: '数据-2' },
+          { id: 3, trustName: '数据-3' },
+          { id: 4, trustName: '数据-4' }
         ],
         dataInfo: [
           [
@@ -41,10 +43,13 @@
             { id: 1, classType: '次级', shortName: '简称4', balance: '444' }
           ],
           [],
-          [],
           [
-            { id: 4, classType: '次优先级', shortName: '简称5', balance: '555' },
-            { id: 4, classType: '次级', shortName: '简称6', balance: '666' }
+            { id: 3, classType: '次优先级', shortName: '简称5', balance: '555' },
+            { id: 3, classType: '次优先级', shortName: '简称6', balance: '666' }
+          ],
+          [
+            { id: 4, classType: '次优先级', shortName: '简称7', balance: '777' },
+            { id: 4, classType: '次级', shortName: '简称8', balance: '888' }
           ]
         ]
       };
@@ -54,46 +59,57 @@
       //   {
       //     classType: '优先级',
       //     shortName1: '简称1',
-      //     balance1: '111',
       //     shortName2: '-',
-      //     balance2: '-',
       //     shortName3: '-',
-      //     balance3: '-',
       //     shortName4: '-',
+      //     balance1: '111',
+      //     balance2: '-',
+      //     balance3: '-',
       //     balance4: '-'
       //   },
       //   {
       //     classType: '优先级',
       //     shortName1: '简称2',
-      //     balance1: '222',
       //     shortName2: '-',
-      //     balance2: '-',
       //     shortName3: '-',
-      //     balance3: '-',
       //     shortName4: '-',
+      //     balance1: '222',
+      //     balance2: '-',
+      //     balance3: '-',
       //     balance4: '-'
       //   },
       //   {
       //     classType: '次优先级',
       //     shortName1: '简称3',
-      //     balance1: '333',
       //     shortName2: '-',
+      //     shortName3: '简称5',
+      //     shortName4: '简称7',
+      //     balance1: '333',
       //     balance2: '-',
-      //     shortName3: '-',
-      //     balance3: '-',
-      //     shortName4: '简称5',
-      //     balance4: '555'
+      //     balance3: '555',
+      //     balance4: '777'
+      //   },
+      //   {
+      //     classType: '次优先级',
+      //     shortName1: '-',
+      //     shortName2: '-',
+      //     shortName3: '简称6',
+      //     shortName4: '-',
+      //     balance1: '-',
+      //     balance2: '-',
+      //     balance3: '666',
+      //     balance4: '-'
       //   },
       //   {
       //     classType: '次级',
       //     shortName1: '简称4',
-      //     balance1: '444',
       //     shortName2: '-',
-      //     balance2: '-',
       //     shortName3: '-',
+      //     shortName4: '简称8',
+      //     balance1: '444',
+      //     balance2: '-',
       //     balance3: '-',
-      //     shortName4: '简称6',
-      //     balance4: '666'
+      //     balance4: '888'
       //   }
       // ];
 
