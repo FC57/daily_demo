@@ -6,15 +6,24 @@
     <title>Count Bytes</title>
   </head>
   <body>
-    <h4>Count Bytes - 字符串所占字节数</h4>
+    <h4>Count Bytes - 字符串所占字节数（UTF-8）</h4>
     <hr />
-    <p style="color: #00ff">靠字符串的length长度遍历字符串统计，是不准确的</p>
-    <p class="charCodeAt_length">
-      利用charCodeAt的范围，直接遍历字符length，🎅所占字节数为
+    <p style="color: #00ff">直接通过字符串length读取字符长度，是不准确的</p>
+    <p class="length">
+      读取length，🎅 的长度为
       <span></span>
     </p>
-    <p class="charCodeAt">
-      利用charCodeAt的范围，通过码元遍历，🎅所占字节数为
+    <p class="codePointAt_length">
+      通过字符码点判断，🎅 的长度为
+      <span></span>
+    </p>
+    <br />
+    <p class="codePontByte">
+      利用codePointAt的范围统计，🎅所占字节数为
+      <span></span>
+    </p>
+    <p class="TextEncoder">
+      利用TextEncoder实例方法encode转换为Unit8Array并读取length，🎅所占字节数为
       <span></span>
     </p>
     <p class="blob">
@@ -22,34 +31,19 @@
       <span></span>
     </p>
     <script type="module">
-      import { getLengthOfCodePoint } from '/utils/string.js';
+      import { getLengthOfCodePoint, getUTF8ByteByCodePoint } from '/utils/string.js';
 
       /**
-       * charCodeAt统计字符串所占字节数
-       * @param str{string} 字符串
-       * @param isCodePointLen{boolean} 是否通过码点计算的长度
+       * TextEncoder实例方法encode获取字符串字节数
+       * @param str{String}
        */
-      function countBytes(str, isCodePointLen = true) {
-        let count = 0;
-        const len = isCodePointLen ? getLengthOfCodePoint(str) : str.length;
-        for (let i = 0; i < len; i++) {
-          const charCode = str.charCodeAt(i);
-          if (charCode <= 0x007f) {
-            count += 1; // ASCII 字符，占用一个字节
-          } else if (charCode <= 0x07ff) {
-            count += 2; // Latin-1 补充字符，占用两个字节
-          } else if (charCode <= 0xffff) {
-            count += 3; // BMP 中的其他字符，占用三个字节
-          } else {
-            count += 4; // 其他 Unicode 字符，占用四个字节
-          }
-        }
-        return count;
+      function getStringByteByTextEncoder(str) {
+        return new TextEncoder().encode(str).length;
       }
 
       /**
        * Blob统计字符串所占字节数
-       * @param str{string} 字符串
+       * @param str{String} 字符串
        */
       function getStringByteSize(str) {
         return new Blob([str]).size;
@@ -57,24 +51,31 @@
 
       (() => {
         const $ = document.querySelector.bind(document);
-
-        // 直接通过字符length遍历
         const str = '🎅';
-        const byteCount = countBytes(str, false);
-        $('.charCodeAt_length span').innerHTML = byteCount;
-        console.log("字符串 '" + str + "' 的字节数为: " + byteCount);
 
-        // 通过码点获取长度再遍历
-        const str1 = '🎅';
-        const byteCount1 = getStringByteSize(str1);
-        $('.charCodeAt span').innerHTML = byteCount1;
-        console.log("字符串 '" + str1 + "' 的字节数为: " + byteCount1);
+        // 读取length获取长度
+        $('.length span').innerHTML = str.length;
+        console.log(`字符串 ${str} 读取length属性的长度为: ${str.length}`);
+
+        // 通过字符码点判断长度
+        const realLen = getLengthOfCodePoint(str);
+        $('.codePointAt_length span').innerHTML = realLen;
+        console.log(`字符串 ${str} 通过字符码点判断长度为: ${realLen}`);
+
+        // 利用codePointAt的范围统计字节数
+        const byteCount1 = getUTF8ByteByCodePoint(str);
+        $('.codePontByte span').innerHTML = byteCount1;
+        console.log(`字符串 ${str} 利用codePointAt的范围统计的字节数为: ${byteCount1}`);
+
+        // TextEncoder实例方法encode获取字符串字节数
+        const byteCount2 = getStringByteByTextEncoder(str);
+        $('.TextEncoder span').innerHTML = byteCount2;
+        console.log(`字符串 ${str} TextEncoder实例方法encode统计的字节数为: ${byteCount2}`);
 
         // 转二进制流，读取size
-        const str2 = '🎅';
-        const byteCount2 = getStringByteSize(str1);
-        $('.blob span').innerHTML = byteCount2;
-        console.log("字符串 '" + str1 + "' 的字节数为: " + byteCount2);
+        const byteCount3 = getStringByteSize(str);
+        $('.blob span').innerHTML = byteCount3;
+        console.log(`字符串 ${str} 转二进制读取size的字节数为: ${byteCount3}`);
       })();
     </script>
   </body>

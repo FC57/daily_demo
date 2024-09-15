@@ -55,24 +55,28 @@ export function pointSlice(str, start = 0, end) {
 }
 
 /**
- * charCodeAt统计字符串所占字节数
- * @param str {string} 字符串
- * @param isCodePointLen {boolean} 是否通过码点计算的长度，默认为true
+ * 获取字符字节数（UTF-8）
+ * @param {String} str 字符串
  */
-export function getStringBytes(str, isCodePointLen = true) {
-  let count = 0;
-  const len = isCodePointLen ? getLengthOfCodePoint(str) : str.length;
-  for (let i = 0; i < len; i++) {
-    const charCode = str.charCodeAt(i);
-    if (charCode <= 0x007f) {
-      count += 1; // ASCII 字符，占用一个字节
-    } else if (charCode <= 0x07ff) {
-      count += 2; // Latin-1 补充字符，占用两个字节
-    } else if (charCode <= 0xffff) {
-      count += 3; // BMP 中的其他字符，占用三个字节
-    } else {
-      count += 4; // 其他 Unicode 字符，占用四个字节
+export function getUTF8ByteByCodePoint(str) {
+  let size = 0;
+  for (let i = 0; i < str.length; i++) {
+    // charCodeAt 是按照 UTF-16 返回码值（0 - 0xFFFF），对于基本多语言平面（BMP）字符，这个值与 Unicode 码点相同
+    // 对于代理对字符，它只能返回高位单元或低位单元的值，因此用 codePointAt 返回完整的 Unicode 码值
+    const codePoint = str.codePointAt(i);
+    if (codePoint <= 0x7f) {
+      size += 1;
+    } else if (codePoint <= 0x7ff) {
+      size += 2;
+    } else if (codePoint <= 0xffff) {
+      size += 3;
+    } else if (codePoint <= 0x10ffff) {
+      size += 4;
+    }
+    // 如果当前代码单元是高代理项，则跳过下一个代码单元
+    if (codePoint > 0xffff) {
+      i++;
     }
   }
-  return count;
+  return size;
 }
