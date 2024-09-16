@@ -43,6 +43,14 @@ Intended to record some of the problems and solutions encountered in daily work,
 
 ## Preview & Commit
 
+🚀 Install the dependency libraries listed in the packaging.json file.
+
+```bash
+pnpm install
+```
+
+- Preview - Case 1
+
 Download the Vscode plugin _Live Server_, click _Go Live_ in the bottom right corner to enable real-time preview,[Jump Link (http://localhost:5500)](http://localhost:5500)
 
 <br/>
@@ -50,6 +58,20 @@ Download the Vscode plugin _Live Server_, click _Go Live_ in the bottom right co
 <p align="center">
   <img src="./assets/imgs/vscode-live-server-extension.png"/>
 </p>
+
+<br/>
+
+- Preview - Case 2
+
+Run the following terminal command, use _serve_ and _open-cli_ to enable the real-time preview server and automatically link to it in the default browser [预览地址 (http://localhost:8888)](http://localhost:8888)
+
+```bash
+# pnpm
+pnpm start
+
+# npm
+npm start
+```
 
 <br/>
 
@@ -81,12 +103,6 @@ Download the Vscode plugin _Live Server_, click _Go Live_ in the bottom right co
 > 💡 Due to VSCode's support and highlighting of typescript syntax, files can be viewed directly in VSCode.
 >
 > 💻 Execute the ts file using the ts-node and typescript libraries, configure the tsconfig. json file, and execute it as the `npx ts-node <file path>`. If ts-node is installed globally, npx can be omitted.
-
-🚀 Install the dependency libraries listed in the packaging.json file.
-
-```bash
-pnpm install
-```
 
 🧩 In this case, the following terminal command can be run to execute the ts file.
 

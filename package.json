@@ -10,6 +10,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "start": "open-cli http://localhost:8888 & serve -l 8888 -L",
     "ts:index": "npm run ts typescript/index.ts",
     "ts": "ts-node --esm typescript/scripts/ts-node.ts --project typescript/tsconfig.json",
     "prepare": "husky install",
@@ -25,6 +26,8 @@
     "commitizen": "^4.3.0",
     "cz-git": "^1.9.4",
     "husky": "8.0.1",
+    "open": "^10.1.0",
+    "serve": "^14.2.3",
     "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"

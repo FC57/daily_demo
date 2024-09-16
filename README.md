@@ -43,6 +43,14 @@
 
 ## 预览 & 提交
 
+🚀 下载安装 _package.json_ 中的包
+
+```bash
+pnpm install
+```
+
+- 预览 - 方式 1
+
 &emsp;&emsp;下载 _Vscode_ 插件 _Live Server_，点击右下角 _Go Live_ 开启实时预览服务器后，[跳转预览 (http://localhost:5500)](http://localhost:5500)
 
 <br/>
@@ -50,6 +58,20 @@
 <p align="center">
   <img src="./assets/imgs/vscode-live-server-extension.png"/>
 </p>
+
+<br/>
+
+- 预览 - 方式 2
+
+&emsp;&emsp;运行如下终端命令，使用 _serve_ 和 _open-cli_ 开启实时预览服务器并自动在默认浏览器链接[预览地址 (http://localhost:8888)](http://localhost:8888)
+
+```bash
+# pnpm
+pnpm start
+
+# npm
+npm start
+```
 
 <br/>
 
@@ -81,12 +103,6 @@
 > 💡 因 VSCode 本身对 typescript 语法的支持及高亮显示，因此可直接在 VSCode 中查看文件。
 >
 > 💻 执行 ts 文件，可使用库 _ts-node_ 和 _typescript_，配置 _tsconfig.json_ 文件，执行即 `npx ts-node 文件路径`，若全局安装了 _ts-node_ 可省略 npx
-
-🚀 下载安装 _package.json_ 中的包
-
-```bash
-pnpm install
-```
 
 🧩 该案例中，可运行如下终端命令，执行 ts 文件
 
