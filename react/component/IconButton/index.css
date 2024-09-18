@@ -1,0 +1,7 @@
+.icon-btn {
+  display: flex;
+  align-items: center;
+}
+.icon-btn img {
+  margin-right: 8px;
+}
