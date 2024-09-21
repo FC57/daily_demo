@@ -17,7 +17,9 @@
     "release": "standard-version",
     "cz": "git-cz",
     "commit": "git pull && git add -A && git-cz && npm run push",
-    "push": "git push & git push github master"
+    "commit:tags": "git pull && git add -A && git-cz && npm run push:tags",
+    "push": "git push & git push github master",
+    "push:tags": "git push origin master --tags & git push github master --tags"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
