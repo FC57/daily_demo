@@ -72,7 +72,7 @@
     "skipLibCheck": true // 跳过库文件的类型检查
   },
   // 指定编译的文件或目录
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types/auto-imports.d.ts"],
+  "include": ["main.ts", "typescript/**/*.ts", "typescript/**/*.d.ts"],
   // 指定编译器需要排除的文件或文件夹，默认值 node_modules，bower_components，jspm_packages，outDir配置的对应目录
   "exclude": ["src/**/__tests__/*"],
 
