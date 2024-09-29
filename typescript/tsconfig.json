@@ -72,9 +72,15 @@
     "skipLibCheck": true // 跳过库文件的类型检查
   },
   // 指定编译的文件或目录
-  "include": ["main.ts", "typescript/**/*.ts", "typescript/**/*.d.ts"],
+  "include": [
+    "constant/**/*.ts",
+    "scripts/**/*.ts",
+    "type_tool/**/*.d.ts",
+    "types/**/*.d.ts",
+    "index.ts"
+  ],
   // 指定编译器需要排除的文件或文件夹，默认值 node_modules，bower_components，jspm_packages，outDir配置的对应目录
-  "exclude": ["src/**/__tests__/*"],
+  // "exclude": [],
 
   // 更精细的控制，指定项目间的依赖关系，明确主项目依赖于哪些子项目或模块，帮助 TypeScript 确定编译顺序，确保依赖项先编译
   // 实现增量编译，提升效率，通常用于前后端部署在一起，且后端基于 node 开发时配置

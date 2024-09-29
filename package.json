@@ -12,7 +12,7 @@
   "scripts": {
     "start": "open-cli http://localhost:8888 & serve -l 8888 -L",
     "ts:index": "npm run ts typescript/index.ts",
-    "ts": "ts-node --esm typescript/scripts/ts-node.ts",
+    "ts": "ts-node --esm typescript/scripts/ts-node.ts --project typescript/tsconfig.json",
     "prepare": "husky install",
     "release": "standard-version",
     "cz": "git-cz",
