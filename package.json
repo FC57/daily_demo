@@ -29,6 +29,7 @@
     "cz-git": "^1.9.4",
     "husky": "8.0.1",
     "open": "^10.1.0",
+    "open-cli": "^8.0.0",
     "serve": "^14.2.3",
     "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
