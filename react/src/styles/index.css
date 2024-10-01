@@ -1,0 +1,37 @@
+body {
+  min-width: 800px;
+}
+#app {
+  padding: 20px;
+}
+#app h4,
+#app hr {
+  margin: 20px 0;
+}
+#app img.show {
+  width: 100%;
+}
+#app nav.nav-bar {
+  display: flex;
+  margin-bottom: 30px;
+}
+#app nav.nav-bar a {
+  font-size: 15px;
+  padding: 0 1rem;
+  color: hsla(160, 100%, 37%, 1);
+  border-left: 1px solid rgba(60, 60, 60, 0.12);
+}
+#app nav.nav-bar a.active {
+  color: #2c3e50;
+  cursor: default;
+}
+#app nav.nav-bar a:not(.active):hover {
+  background-color: hsla(160, 100%, 37%, 0.2);
+}
+#app nav.nav-bar a:first-of-type {
+  border: 0;
+  margin-left: auto;
+}
+#app nav.nav-bar a:last-of-type {
+  margin-right: auto;
+}

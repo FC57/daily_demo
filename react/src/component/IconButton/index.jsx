@@ -1,11 +1,12 @@
 // 实际开发中 import { Button } from 'antd';
-const { Button } = antd;
 
 /**
  * 自定义图标按钮组件
  * * iconName 为 assets/imgs/btns 图片名称（如：new.png 和 new.gray.png 为一组的图片，取 new）
  */
-function IconBtn({ children, iconName, disabled = false, ...resetOption }) {
+function IconButton({ children, iconName, disabled = false, ...resetOption }) {
+  const { Button } = antd;
+
   let cIcon = null;
   if (typeof iconName === 'string') {
     // 图片路径
@@ -23,3 +24,5 @@ function IconBtn({ children, iconName, disabled = false, ...resetOption }) {
     </Button>
   );
 }
+
+// export default IconButton;
