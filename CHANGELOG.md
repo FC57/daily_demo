@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://gitee.com/franky57/daily_demo/compare/v0.0.2...v0.0.3) (2024-10-01)
+
+
+### Features
+
+* **react:** ✨ add react-router、cdn of jsDelivr ([f7b04e1](https://gitee.com/franky57/daily_demo/commit/f7b04e1a27b66425dd0c193d7f5c816030c8c242))
+
+
+### Bug Fixes
+
+* **dependent_libraries:** 🐛 fix the name of nprogress ([2575271](https://gitee.com/franky57/daily_demo/commit/2575271d9f620d2b882e4f43246a8984c66c6991))
+
 ## [0.0.2](https://github.com/FC57/daily_demo/commit/f3ac905faafd7ba73595902ba1b63a5509305db9) (2024-09-21)
 
 ### Features
