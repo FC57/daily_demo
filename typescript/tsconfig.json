@@ -75,6 +75,7 @@
   "include": [
     "constant/**/*.ts",
     "scripts/**/*.ts",
+    "type_tool/**/*.ts",
     "type_tool/**/*.d.ts",
     "types/**/*.d.ts",
     "index.ts"
