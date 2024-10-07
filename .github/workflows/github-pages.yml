@@ -39,7 +39,7 @@ jobs:
           fi
 
       - name: Deploy to GitHub Pages
-        if: steps.check_changes.outputs.IS_CHANGED == 'true'
+        if: ${{ env.IS_CHANGED == 'true' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
