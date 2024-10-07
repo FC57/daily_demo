@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   schedule:
     - cron: '0 16 * * *' # 每天 UTC 时间 16:00 执行（即北京时间 00:00）
-
   workflow_dispatch: # 允许手动触发
 
 jobs:
@@ -14,18 +13,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master # 指定要检出的分支
+          ref: master # 指定检出master分支
 
-      - name: Check for changes
+      - name: Get the last successful workflow run
+        id: get_last_run
+        run: |
+          last_run=$(gh api -X GET /repos/${{ github.repository }}/actions/runs?status=success&per_page=1 | jq -r '.workflow_runs[0].created_at')
+          echo "LAST_RUN=${last_run}" >> $GITHUB_ENV
+
+      - name: Check for new commits
         id: check_changes
         run: |
-          git fetch origin master
-          echo "Checking for changes..."
-          git diff --quiet HEAD origin/master || echo "changes" > changes.txt
+          if [ -z "$LAST_RUN" ]; then
+            echo "First run detected, marking as true."
+            echo "IS_CHANGED=true" >> $GITHUB_ENV
+          else
+            new_commits=$(git log --since="$LAST_RUN" --oneline)
+            if [ -n "$new_commits" ]; then
+              echo "Changes detected."
+              echo "IS_CHANGED=true" >> $GITHUB_ENV
+            else
+              echo "No Changes found."
+              echo "IS_CHANGED=false" >> $GITHUB_ENV
+            fi
+          fi
 
       - name: Deploy to GitHub Pages
-        if: steps.check_changes.outputs.changes == 'changes'
+        if: steps.check_changes.outputs.IS_CHANGED == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ # 指定要发布的目录，这里是根目录
+          publish_dir: ./ # 指定要发布的目录
