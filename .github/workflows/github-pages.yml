@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天 UTC 时间 00:00 执行（即北京时间 16:00）
+    - cron: '0 16 * * *' # 每天 UTC 时间 16:00 执行（即北京时间 00:00）
+
+  workflow_dispatch: # 允许手动触发
 
 jobs:
   deploy:
@@ -17,9 +19,9 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git fetch origin main
+          git fetch origin master
           echo "Checking for changes..."
-          git diff --quiet HEAD origin/master || echo "changes" > changes.txt
+          git diff --quiet HEAD origin/main || echo "changes" > changes.txt
 
       - name: Deploy to GitHub Pages
         if: steps.check_changes.outputs.changes == 'changes'
