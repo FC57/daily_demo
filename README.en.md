@@ -141,6 +141,9 @@ npm run commit
 
 ```text
 daily_demo
+├─ .github
+│  └─ workflows                           # github workflows
+│     └─ github-pages.yml                 # Timed task to build project
 ├─ .husky                                 # Define additional script execution in the specified hook of Git commit
 │  ├─ commit-msg                          # Hooks triggered during git commit
 │  └─ _
@@ -171,6 +174,10 @@ If you are interested, you can share the problems and solutions you encounter in
 - Help with others by discussion in issues
 
 - Sharing can be done through PR, issue comments, links, etc
+
+## Show your support
+
+If you like the project, give it a star ⭐️, it will be a great encouragement to me.
 
 ## License
 

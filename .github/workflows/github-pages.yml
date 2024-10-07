@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 时间 00:00 执行（即北京时间 16:00）
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master # 指定要检出的分支
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git fetch origin main
+          echo "Checking for changes..."
+          git diff --quiet HEAD origin/master || echo "changes" > changes.txt
+
+      - name: Deploy to GitHub Pages
+        if: steps.check_changes.outputs.changes == 'changes'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # 指定要发布的目录，这里是根目录
