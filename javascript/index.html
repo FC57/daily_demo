@@ -40,7 +40,7 @@
       <div class="sidebar">
         <h1>HTML/CSS Javascript case</h1>
         <div class="search-form">
-          <input aria-label="Search demos" placeholder="Search" type="search" />
+          <input class="search" aria-label="Search demos" placeholder="Search" type="search" />
           <div class="search-spinner" aria-hidden hidden></div>
           <div class="sr-only" aria-live="polite"></div>
         </div>
@@ -52,6 +52,16 @@
       <div class="detail"></div>
     </div>
     <!-- 蒙层 -->
-    <div class="mask"></div>
+    <div class="mask">
+      <div class="spin-container">
+        <div class="spin-dot">
+          <i class="spin-dot-item"></i>
+          <i class="spin-dot-item"></i>
+          <i class="spin-dot-item"></i>
+          <i class="spin-dot-item"></i>
+        </div>
+        <div class="spin-text">Loading ...</div>
+      </div>
+    </div>
   </body>
 </html>

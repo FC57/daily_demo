@@ -6,6 +6,27 @@ html {
 *:after {
   box-sizing: inherit;
 }
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+.sidebar nav::-webkit-scrollbar,
+.sidebar nav::-webkit-scrollbar-thumb,
+.sidebar nav::-webkit-scrollbar-track {
+  width: 4px;
+  height: 4px;
+  position: absolute;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: #fafafa;
+}
 
 body {
   min-width: 1000px;
@@ -28,7 +49,8 @@ body {
 }
 textarea,
 input,
-button {
+button,
+.optionList li {
   font-size: 1rem;
   font-family: inherit;
   border: none;
@@ -46,7 +68,8 @@ button {
 
 textarea:hover,
 input:hover,
-button:hover {
+button:hover,
+.optionList li:hover {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
 }
 
@@ -156,70 +179,148 @@ form[action$='destroy'] button {
 
 .sidebar nav {
   flex: 1;
+  overflow: hidden;
+  padding: 1rem 2em;
+  margin: 4px 6px 4px 0;
+}
+
+.sidebar nav:hover {
   overflow: auto;
-  padding-top: 1rem;
 }
 
-.sidebar nav a span {
-  float: right;
-  color: #eeb004;
-}
-.sidebar nav a.active span {
-  color: inherit;
-}
-
-i {
-  color: #818181;
-}
-.sidebar nav .active i {
-  color: inherit;
-}
-
-.sidebar ul {
+.sidebar .optionList {
   padding: 0;
   margin: 0;
   list-style: none;
+  width: 17rem;
+  transform: translateX(0.5rem);
 }
 
 .sidebar li {
-  margin: 0.25rem 0;
-}
-
-.sidebar nav a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   overflow: hidden;
-
-  white-space: pre;
-  padding: 0.5rem;
-  border-radius: 8px;
-  color: inherit;
-  text-decoration: none;
-  gap: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #333636;
 }
 
-.sidebar nav a:hover {
-  background: #e3e3e3;
+.sidebar .optionList li:hover {
+  background-color: #f5f5f5;
 }
 
-.sidebar nav a.active {
-  background: hsl(224, 98%, 58%);
-  color: white;
-}
-
-.sidebar nav a.pending {
-  color: hsl(224, 98%, 58%);
+.sidebar li + li {
+  margin-top: 0.6rem;
 }
 
 .detail {
   flex: 1;
-  padding: 2rem 4rem;
+  margin: 1rem;
+  padding: 1rem;
   width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  overflow: hidden;
 }
 
-.detail.loading {
-  opacity: 0.25;
-  transition: opacity 200ms;
-  transition-delay: 200ms;
+.detail:hover {
+  overflow: auto;
+}
+
+.mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.mask .spin-container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 12rem);
+  transform: translate(-50%, -60%);
+}
+
+.mask .spin-container .spin-dot {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  animation: spin 1.2s linear infinite;
+  margin: 11px auto;
+}
+
+.mask .spin-container .spin-dot-item {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transform: scale(0.75);
+  transform-origin: 50% 50%;
+  background-color: #1677ff;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: spinMove 1s linear alternate infinite;
+}
+
+.mask .spin-container .spin-dot-item:nth-child(1) {
+  top: 0;
+  left: 0;
+  animation-delay: 0s;
+}
+
+.mask .spin-container .spin-dot-item:nth-child(2) {
+  top: 0;
+  right: 0;
+  animation-delay: 0.4s;
+}
+
+.mask .spin-container .spin-dot-item:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  animation-delay: 0.8s;
+}
+
+.mask .spin-container .spin-dot-item:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  animation-delay: 1.2s;
+}
+
+.mask .spin-container .spin-text {
+  color: #1677ff;
+  font-size: 14px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinMove {
+  100% {
+    opacity: 1;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .mask .spin-container {
+    left: 50%;
+  }
 }
