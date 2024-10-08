@@ -19,6 +19,7 @@ jobs:
         id: get_last_run
         run: |
           last_run=$(gh api -X GET /repos/${{ github.repository }}/actions/runs?status=success&per_page=1 | jq -r '.workflow_runs[0].created_at')
+          echo "last_run:${last_run}"
           echo "LAST_RUN=${last_run}" >> $GITHUB_ENV
 
       - name: Check for new commits
