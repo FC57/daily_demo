@@ -141,9 +141,6 @@ npm run commit
 
 ```text
 daily_demo
-├─ .github
-│  └─ workflows                           # github 工作流程
-│     └─ github-pages.yml                 # 定时任务构建项目
 ├─ .husky                                 # 定义在git提交的指定钩子中额外执行脚本
 │  ├─ commit-msg                          # 提交信息 git commit 时触发的钩子
 │  └─ _
