@@ -97,13 +97,16 @@ export function mazeRender(mazeData = mazeView) {
     trs += `</tr>`;
   }
 
-  return `<p align="center">请使用键盘上的→←↑↓键进行游戏</p>
+  return `<p align="center">
+    <span>请使用键盘上的→←↑↓键进行游戏</span>
+    <button class="restart" style="margin-left:20px;cursor:pointer">重置游戏</button>
+  </p>
   <table id="board" align="center" cellspacing="0" cellpadding="0">
     <tbody>
       ${trs}
     </tbody>
   </table>
-  <p class="message" align="center" style="font-weight:600;font-size:1.5rem;color:#fa541c"></p>
+  <p class="message" align="center" style="font-weight:600;font-size:1.5rem;color:#fa541c;margin-bottom:0"></p>
   `;
 }
 
@@ -112,13 +115,29 @@ export function mazeHandler() {
   const $ = document.querySelector.bind(document);
   // 需要操作的 DOM
   const doms = {
+    search: $('.search-form .search'),
     maze: $('#board'),
-    message: $('p.message')
+    message: $('p.message'),
+    reset: $('button.restart')
   };
   // 是否通关
   let isSuccess = false;
   // 当前行、列
   const start = { rows: 0, cols: 0 };
+  const tds = document.querySelectorAll('#board td');
+  // 重置游戏
+  doms.reset.onclick = () => {
+    isSuccess = false;
+    start.rows = 0;
+    start.cols = 0;
+    doms.message.innerText = '';
+    tds.forEach(td => {
+      if (td.innerText !== 'start') {
+        td.style.backgroundColor = '';
+      }
+    });
+    doms.reset.blur();
+  };
 
   // 判断是否后退，如果是后退，需要清除当前单元格的样式
   function testNext(nxt) {
@@ -137,9 +156,11 @@ export function mazeHandler() {
 
   // 迷宫移动
   function moveIt(e) {
+    // 侧边栏搜索框聚焦或成功后
+    if (document.activeElement === doms.search || isSuccess) {
+      return;
+    }
     e.preventDefault();
-    if (isSuccess) return;
-
     switch (e.key) {
       case 'ArrowLeft': // 向左移动
         // 已经到最左边界，则不能移动

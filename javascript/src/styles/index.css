@@ -208,6 +208,11 @@ form[action$='destroy'] button {
   color: #333636;
 }
 
+.sidebar li.active {
+  color: #4b9e5f;
+  border: '1px solid #4b9e5f';
+}
+
 .sidebar .optionList li:hover {
   background-color: #f5f5f5;
 }

@@ -46,6 +46,9 @@ async function loadContent(wrap, render, handler) {
   }
 }
 
+/** 记录上次渲染选项信息 */
+const lastOptionInfo = { name: '', idx: 0 };
+
 /**
  * 创建侧边栏选项
  * @param {{ name:string;handler?:()=>void;render:string | ()=>string }[]} filterOptions 过滤后的侧边栏
@@ -55,19 +58,23 @@ async function loadContent(wrap, render, handler) {
 function createNav(filterOptions, doms, isInit = false) {
   // 先清空再处理
   doms.ul.innerHTML = '';
-  // 记录上次渲染索引
-  let lastIndex = 0;
   filterOptions.forEach(({ name, render, handler }, index) => {
     const li = document.createElement('li');
     li.textContent = li.title = `${index + 1}. ${name}`;
+    const isEqual = lastOptionInfo.name === name;
+    // 两次渲染的是同一内容
+    if (isEqual) {
+      li.classList.add('active');
+    }
     li.onclick = () => {
       doms.detail.style.opacity = 0;
       doms.mask.style.display = 'block';
-      doms.ul.children[lastIndex].style.color = '#333636';
-      doms.ul.children[lastIndex].style.border = 'none';
-      li.style.color = '#4b9e5f';
-      li.style.border = '1px solid #4b9e5f';
-      lastIndex = index;
+      if (!isEqual) {
+        doms.ul.children[lastOptionInfo.idx].classList.remove('active');
+        li.classList.add('active');
+        lastOptionInfo.name = name;
+        lastOptionInfo.idx = index;
+      }
       loadContent(doms.detail, render, handler)
         .catch(error => {
           console.log(error);
@@ -98,15 +105,14 @@ function createNav(filterOptions, doms, isInit = false) {
   });
 }
 
-/** 是否正在组合，用于中文输入过程触发input事件 */
-let isComposing = false;
-
 /**
  * 创建侧边栏
  * @param { { name:string;handler?:()=>void;render:string | ()=>string }[] } options 侧边栏选项
  * @param { { ul:HTMLUListElement;detail:HTMLDivElement;search:HTMLInputElement;mask:HTMLDivElement } } doms Dom 集合
  */
 export function createSideBar(options, doms) {
+  /** 是否正在组合，用于中文输入过程触发input事件 */
+  let isComposing = false;
   // 监听组合事件
   if (!doms.search.hasAttribute('iscompListener')) {
     doms.search.setAttribute('iscompListener', true);
@@ -118,20 +124,18 @@ export function createSideBar(options, doms) {
         doms.search.value === ''
           ? options
           : options.filter(it => it.name.includes(doms.search.value)),
-        doms.ul
+        doms
       );
     });
   }
   // 创建搜索逻辑
   if (doms.search.oninput === null) {
-    doms.search.oninput = e => {
-      if (isComposing) {
-        return;
-      }
-      createNav(
-        e.target.value === '' ? options : options.filter(it => it.name.includes(e.target.value)),
-        doms
-      );
+    doms.search.oninput = function (e) {
+      !isComposing &&
+        createNav(
+          e.target.value === '' ? options : options.filter(it => it.name.includes(e.target.value)),
+          doms
+        );
     };
   }
   createNav(options, doms, true);
