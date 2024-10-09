@@ -1,10 +1,10 @@
 /** canvas画布容器 */
 export const canvasRender = function () {
   const style = {
-    content: 'display: flex;gap: 20px;flex-wrap: wrap;',
+    content: 'display:flex;gap:20px;flex-wrap:wrap;justify-content:space-around;align-items:center',
     winWrap: 'width:400px;height:400px;position:relative',
     winning:
-      'width: 400px;height: 280px;position: absolute;background-color: #eee;font-size: 50px;text-align: center;line-height: 280px;letter-spacing: 20px;user-select: none;'
+      'width:400px;height:280px;position:absolute;background-color:#eee;font-size:50px;text-align:center;line-height:280px;letter-spacing:20px;user-select:none;'
   };
 
   return `<h4>canvas 练习</h4>
@@ -34,7 +34,7 @@ export const canvasRender = function () {
  */
 function createCanvas(wrap, className) {
   const view = document.createElement('canvas');
-  view.style.border = '1px solid #ccc;';
+  view.style.border = '1px solid #ccc';
   view.classList.add('view');
   if (typeof className === 'string') {
     view.classList.add(className);
@@ -277,7 +277,7 @@ function drawVideo(wrap, $) {
   ctx.clip();
   const video = $('.source');
   // 调整位置
-  content.insertBefore(view, $('.winWrap'));
+  wrap.insertBefore(view, $('.winWrap'));
   function draw() {
     ctx.clearRect(0, 0, view.width, view.height);
     ctx.drawImage(video, 100, 0, 230, 400);

@@ -18,7 +18,6 @@ html {
 .sidebar nav::-webkit-scrollbar-track {
   width: 4px;
   height: 4px;
-  position: absolute;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #e0e0e0;
@@ -221,14 +220,9 @@ form[action$='destroy'] button {
   flex: 1;
   margin: 1rem;
   padding: 1rem;
-  width: 100%;
+  overflow: auto;
   border-radius: 4px;
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
-  overflow: hidden;
-}
-
-.detail:hover {
-  overflow: auto;
 }
 
 .mask {
