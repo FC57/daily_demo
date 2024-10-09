@@ -46,7 +46,7 @@ async function loadContent(wrap, render, handler) {
   }
 }
 
-/** 记录上次渲染选项信息 */
+/** 记录上次渲染选项名称（名称唯一，索引会变） */
 const lastOptionInfo = { name: '', idx: 0 };
 
 /**
@@ -65,6 +65,8 @@ function createNav(filterOptions, doms, isInit = false) {
     // 两次渲染的是同一内容
     if (isEqual) {
       li.classList.add('active');
+      // 更新索引
+      lastOptionInfo.idx = index;
     }
     li.onclick = () => {
       doms.detail.style.opacity = 0;
@@ -124,7 +126,7 @@ export function createSideBar(options, doms) {
       createNav(
         doms.search.value === ''
           ? options
-          : options.filter(it => it.name.includes(doms.search.value)),
+          : options.filter(it => it.name.toLowerCase().includes(doms.search.value.toLowerCase())),
         doms
       );
     });
@@ -134,7 +136,9 @@ export function createSideBar(options, doms) {
     doms.search.oninput = function (e) {
       !isComposing &&
         createNav(
-          e.target.value === '' ? options : options.filter(it => it.name.includes(e.target.value)),
+          e.target.value === ''
+            ? options
+            : options.filter(it => it.name.toLowerCase().includes(e.target.value.toLowerCase())),
           doms
         );
     };
