@@ -70,7 +70,8 @@ function createNav(filterOptions, doms, isInit = false) {
       doms.detail.style.opacity = 0;
       doms.mask.style.display = 'block';
       if (!isEqual) {
-        doms.ul.children[lastOptionInfo.idx].classList.remove('active');
+        const lastOption = doms.ul.children[lastOptionInfo.idx];
+        lastOption && lastOption.classList.remove('active');
         li.classList.add('active');
         lastOptionInfo.name = name;
         lastOptionInfo.idx = index;
