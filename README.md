@@ -75,6 +75,12 @@ npm start
 
 <br/>
 
+<p align="center">
+  <img src="./assets/imgs/s-preview.gif"/>
+</p>
+
+<br/>
+
 - 开源库 CDN
 
 > 特别感谢开源库 CDN [BootCDN](https://www.bootcdn.cn/) 和 [jsdelivr](https://www.jsdelivr.com/)

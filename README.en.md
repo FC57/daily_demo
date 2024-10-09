@@ -75,6 +75,14 @@ npm start
 
 <br/>
 
+<p align="center">
+  <img src="./assets/imgs/s-preview.gif"/>
+</p>
+
+<br/>
+
+<br/>
+
 - Open source library CDN
 
 > Special thanks to the open-source library CDN [BootCDN](https://www.bootcdn.cn/), [jsdelivr](https://www.jsdelivr.com/)
