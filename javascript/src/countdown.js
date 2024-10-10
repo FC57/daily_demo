@@ -10,79 +10,57 @@ export function countdownRender() {
     text: 'color:#fff;margin-top:-30px;font-weight:bold;font-size:22px;'
   };
 
+  const hours = [
+    [2, 1, 0],
+    [3, 2, 1, 0, 9, 8, 7, 6, 5, 4]
+  ];
+  const minuteOrSeconds = [
+    [5, 4, 3, 2, 1, 0],
+    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+  ];
+
   return `<div style=${style.wrap}>
     <div class="container" style=${style.container}>
       <p style=${style.text}>距离活动结束时间：</p>
       <div class="con" style=${style.con}>
         <div class="time-item"  style=${style['time-item']}>
           <ul style=${style.ul}>
-            <li><img src="/assets/imgs/2.png" /></li>
-            <li><img src="/assets/imgs/1.png" /></li>
-            <li><img src="/assets/imgs/0.png" /></li>
+            ${hours[0].map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`).join('')}
           </ul>
         </div>
         <div class="time-item" style=${style['time-item']}>
           <ul style=${style.ul}>
-            <li><img src="/assets/imgs/3.png" /></li>
-            <li><img src="/assets/imgs/2.png" /></li>
-            <li><img src="/assets/imgs/1.png" /></li>
-            <li><img src="/assets/imgs/0.png" /></li>
-            <li><img src="/assets/imgs/9.png" /></li>
-            <li><img src="/assets/imgs/8.png" /></li>
-            <li><img src="/assets/imgs/7.png" /></li>
-            <li><img src="/assets/imgs/6.png" /></li>
-            <li><img src="/assets/imgs/5.png" /></li>
-            <li><img src="/assets/imgs/4.png" /></li>
+            ${hours[1].map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`).join('')}
           </ul>
         </div>
         <div class="time" style=${style.time}>时</div>
         <div class="time-item" style=${style['time-item']}>
           <ul style=${style.ul}>
-            <li><img src="/assets/imgs/5.png" /></li>
-            <li><img src="/assets/imgs/4.png" /></li>
-            <li><img src="/assets/imgs/3.png" /></li>
-            <li><img src="/assets/imgs/2.png" /></li>
-            <li><img src="/assets/imgs/1.png" /></li>
-            <li><img src="/assets/imgs/0.png" /></li>
+            ${minuteOrSeconds[0]
+              .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
+              .join('')}
           </ul>
         </div>
         <div class="time-item" style=${style['time-item']}>
           <ul style=${style.ul}>
-            <li><img src="/assets/imgs/9.png" /></li>
-            <li><img src="/assets/imgs/8.png" /></li>
-            <li><img src="/assets/imgs/7.png" /></li>
-            <li><img src="/assets/imgs/6.png" /></li>
-            <li><img src="/assets/imgs/5.png" /></li>
-            <li><img src="/assets/imgs/4.png" /></li>
-            <li><img src="/assets/imgs/3.png" /></li>
-            <li><img src="/assets/imgs/2.png" /></li>
-            <li><img src="/assets/imgs/1.png" /></li>
-            <li><img src="/assets/imgs/0.png" /></li>
+            ${minuteOrSeconds[1]
+              .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
+              .join('')}
           </ul>
         </div>
         <div class="time" style=${style.time}>分</div>
         <div class="time-item" style=${style['time-item']}>
           <ul style=${style.ul}>
-            <li><img src="/assets/imgs/5.png" /></li>
-            <li><img src="/assets/imgs/4.png" /></li>
-            <li><img src="/assets/imgs/3.png" /></li>
-            <li><img src="/assets/imgs/2.png" /></li>
-            <li><img src="/assets/imgs/1.png" /></li>
-            <li><img src="/assets/imgs/0.png" /></li>
+            ${minuteOrSeconds[0]
+              .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
+              .join('')}
           </ul>
         </div>
         <div class="time-item" style=${style['time-item']}>
           <ul style=${style.ul}>
-            <li><img src="/assets/imgs/9.png" /></li>
-            <li><img src="/assets/imgs/8.png" /></li>
-            <li><img src="/assets/imgs/7.png" /></li>
-            <li><img src="/assets/imgs/6.png" /></li>
-            <li><img src="/assets/imgs/5.png" /></li>
-            <li><img src="/assets/imgs/4.png" /></li>
-            <li><img src="/assets/imgs/3.png" /></li>
-            <li><img src="/assets/imgs/2.png" /></li>
-            <li><img src="/assets/imgs/1.png" /></li>
-            <li><img src="/assets/imgs/0.png" /></li>
+            ${minuteOrSeconds[1]
+              .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
+              .join('')}
           </ul>
         </div>
         <div class="time" style=${style.time}>秒</div>
