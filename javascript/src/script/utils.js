@@ -16,18 +16,25 @@ export function setNProgressConfig(win = window) {
   };
 }
 
+/** 记录上次渲染选项名称、索引、离开后执行的副作用函数（名称唯一，索引会变） */
+const lastOptionInfo = { name: '', idx: 0, effect: void 0 };
+
 /**
  * 渲染内容
  * @param { HTMLDivElement } wrap 渲染容器
  * @param {string | ()=>string} render 页面渲染
- * @param {undefined|()=>void} handler 额外操作
+ * @param {undefined|()=>(undefined|()=>void)} handler 额外操作
  */
 async function loadContent(wrap, render, handler) {
   try {
+    // 先清空再处理
+    wrap.innerHTML = '';
     if (typeof render === 'function') {
       // 渲染 DOM
       wrap.innerHTML = render();
-      typeof handler === 'function' && handler();
+      if (typeof handler === 'function') {
+        lastOptionInfo.effect = handler();
+      }
     } else {
       // 渲染 JS 源码
       const url = `/javascript/src/${render}.js`;
@@ -46,12 +53,9 @@ async function loadContent(wrap, render, handler) {
   }
 }
 
-/** 记录上次渲染选项名称（名称唯一，索引会变） */
-const lastOptionInfo = { name: '', idx: 0 };
-
 /**
  * 创建侧边栏选项
- * @param {{ name:string;handler?:()=>void;render:string | ()=>string }[]} filterOptions 过滤后的侧边栏
+ * @param {{ name:string;handler?:()=>(undefined|()=>void);render:string | ()=>string }[]} filterOptions 过滤后的侧边栏
  * @param { { ul:HTMLUListElement;detail:HTMLDivElement;search:HTMLInputElement;mask:HTMLDivElement } } doms Dom 集合
  * @param { boolean|undefined } isInit 是否初始化
  */
@@ -71,6 +75,11 @@ function createNav(filterOptions, doms, isInit = false) {
     li.onclick = () => {
       doms.detail.style.opacity = 0;
       doms.mask.style.display = 'block';
+      // 执行副作用并重置
+      if (typeof lastOptionInfo.effect === 'function') {
+        lastOptionInfo.effect();
+        lastOptionInfo.effect = void 0;
+      }
       if (!isEqual) {
         const lastOption = doms.ul.children[lastOptionInfo.idx];
         lastOption && lastOption.classList.remove('active');
@@ -110,7 +119,7 @@ function createNav(filterOptions, doms, isInit = false) {
 
 /**
  * 创建侧边栏
- * @param { { name:string;handler?:()=>void;render:string | ()=>string }[] } options 侧边栏选项
+ * @param { { name:string;handler?:()=>(undefined|()=>void);render:string | ()=>string }[] } options 侧边栏选项
  * @param { { ul:HTMLUListElement;detail:HTMLDivElement;search:HTMLInputElement;mask:HTMLDivElement } } doms Dom 集合
  */
 export function createSideBar(options, doms) {

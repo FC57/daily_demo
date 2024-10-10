@@ -205,4 +205,10 @@ export function mazeHandler() {
   }
 
   document.onkeydown = moveIt;
+
+  // 离开该页面后执行的副作用
+  return () => {
+    console.log('离开或刷新迷宫页面');
+    document.onkeydown = null;
+  };
 }
