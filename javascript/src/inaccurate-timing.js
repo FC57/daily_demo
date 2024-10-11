@@ -2,31 +2,30 @@
 export function timingRender() {
   const style = {
     action: 'font-size:14px;padding:2rem;display:flex;gap:2rem;',
-    // 样式间有空格，需要整体作为字符串再包一下
     timer:
-      '"flex:1;box-shadow:0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);border-radius:4px;padding:0.8rem;"',
+      'flex:1;box-shadow:0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);border-radius:4px;padding:0.8rem;',
     header: 'display:flex;align-items:center;',
     title: 'font-size:13px;transform:translateX(20px);color:#555;',
     display:
-      '"padding:1rem;text-align:center;background-color:#fafafa;border-radius:6px;margin:2em 1em 1em;"'
+      'padding:1rem;text-align:center;background-color:#fafafa;border-radius:6px;margin:2em 1em 1em;'
   };
 
   return `<h4>解决页面失活导致计时不准问题</h4>
   <hr />
-  <div class="action" style=${style.action}>
-    <div style=${style.timer}>
-      <div style=${style.header}>
+  <div class="action" style="${style.action}">
+    <div style="${style.timer}">
+      <div style="${style.header}">
         <button class="issue"></button>
-        <span style=${style.title}>不做额外处理</span>
+        <span style="${style.title}">不做额外处理</span>
       </div>
-      <p class="displayTimer1" style=${style.display}>...</p>
+      <p class="displayTimer1" style="${style.display}">...</p>
     </div>
-    <div style=${style.timer}>
-      <div style=${style.header}>
+    <div style="${style.timer}">
+      <div style="${style.header}">
         <button class="solute"></button>
-        <span style=${style.title}>监听 visibilitychange</span>
+        <span style="${style.title}">监听 visibilitychange</span>
       </div>
-      <p class="displayTimer2" style=${style.display}>...</p>
+      <p class="displayTimer2" style="${style.display}">...</p>
     </div>
   </div>`;
 }

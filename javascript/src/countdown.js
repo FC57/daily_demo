@@ -2,8 +2,8 @@
 export function countdownRender() {
   const style = {
     wrap: 'height:100%;background-color:#000;overflow:auto;padding:20px',
-    container: 'width:600px;height:400px;margin-top:150px;margin-left:auto;margin-right:auto;',
-    con: 'width:490px;height:160px;margin-top:100px;margin-bottom:100px;margin-left:auto;margin-right:auto;padding-top:40px;',
+    container: 'width:600px;height:400px;margin:150px auto 0;',
+    con: 'width:490px;height:160px;margin:100px auto 100px;',
     'time-item': 'color:#fff;width:65px;height:120px;float:left;overflow:hidden;',
     ul: 'position:relative;font-size:0;top:0px;padding:0;',
     time: 'width:30px;text-align:center;line-height:120px;font-weight:bold;float:left;color:#fff;',
@@ -19,51 +19,51 @@ export function countdownRender() {
     [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
   ];
 
-  return `<div style=${style.wrap}>
-    <div class="container" style=${style.container}>
-      <p style=${style.text}>距离活动结束时间：</p>
-      <div class="con" style=${style.con}>
-        <div class="time-item"  style=${style['time-item']}>
-          <ul style=${style.ul}>
+  return `<div style="${style.wrap}">
+    <div class="container" style="${style.container}">
+      <p style="${style.text}">距离活动结束时间：</p>
+      <div class="con" style="${style.con}">
+        <div class="time-item"  style="${style['time-item']}">
+          <ul style="${style.ul}">
             ${hours[0].map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`).join('')}
           </ul>
         </div>
-        <div class="time-item" style=${style['time-item']}>
-          <ul style=${style.ul}>
+        <div class="time-item" style="${style['time-item']}">
+          <ul style="${style.ul}">
             ${hours[1].map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`).join('')}
           </ul>
         </div>
-        <div class="time" style=${style.time}>时</div>
-        <div class="time-item" style=${style['time-item']}>
-          <ul style=${style.ul}>
+        <div class="time" style="${style.time}">时</div>
+        <div class="time-item" style="${style['time-item']}">
+          <ul style="${style.ul}">
             ${minuteOrSeconds[0]
               .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
               .join('')}
           </ul>
         </div>
-        <div class="time-item" style=${style['time-item']}>
-          <ul style=${style.ul}>
+        <div class="time-item" style="${style['time-item']}">
+          <ul style="${style.ul}">
             ${minuteOrSeconds[1]
               .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
               .join('')}
           </ul>
         </div>
-        <div class="time" style=${style.time}>分</div>
-        <div class="time-item" style=${style['time-item']}>
-          <ul style=${style.ul}>
+        <div class="time" style="${style.time}">分</div>
+        <div class="time-item" style="${style['time-item']}">
+          <ul style="${style.ul}">
             ${minuteOrSeconds[0]
               .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
               .join('')}
           </ul>
         </div>
-        <div class="time-item" style=${style['time-item']}>
-          <ul style=${style.ul}>
+        <div class="time-item" style="${style['time-item']}">
+          <ul style="${style.ul}">
             ${minuteOrSeconds[1]
               .map(it => `<li><img src="/assets/imgs/${it}.png" /></li>`)
               .join('')}
           </ul>
         </div>
-        <div class="time" style=${style.time}>秒</div>
+        <div class="time" style="${style.time}">秒</div>
       </div>
     </div>
   </div>`;

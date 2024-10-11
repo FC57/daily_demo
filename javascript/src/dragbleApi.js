@@ -20,8 +20,8 @@ function getSubjectsDOMs() {
 
   return subjects
     .map(
-      ({ name, color }, index) =>
-        ` <div data-effect="copy" draggable="true" style=${commonSyle}background-color:${color};>
+      ({ name, color }) =>
+        ` <div data-effect="copy" draggable="true" style="${commonSyle}background-color:${color};">
           ${name}
         </div> `
     )
@@ -39,14 +39,14 @@ function getTableDOM() {
   };
 
   let tableHTML = `
-    <table border="1" style=${style.table}>
+    <table border="1" style="${style.table}">
       <colgroup>
         <col class="col1" />
         ${daysOfWeek.map(() => '<col />').join('')}
       </colgroup>
       <tr>
         <th style="border:none;width:60px"></th>
-        ${daysOfWeek.map(day => `<th style=${style.th}>${day}</th>`).join('')}
+        ${daysOfWeek.map(day => `<th style="${style.th}">${day}</th>`).join('')}
       </tr>
   `;
 
@@ -56,13 +56,13 @@ function getTableDOM() {
     tableHTML += `
       <tr>
         <th rowspan="4" class="span" style="background-color:rgb(198,196,198,0.7)">${slot}</th>
-        ${`<td data-drop="copy" style=${style.td}></td>`.repeat(7)}
+        ${`<td data-drop="copy" style="${style.td}"></td>`.repeat(7)}
       </tr>
     `;
     for (let i = 0; i < 3; i++) {
       tableHTML += `
         <tr>
-          ${`<td data-drop="copy" style=${style.td}></td>`.repeat(7)}
+          ${`<td data-drop="copy" style="${style.td}"></td>`.repeat(7)}
         </tr>
       `;
     }
@@ -80,11 +80,11 @@ export function dragbleRender() {
   };
 
   return `<h2 style="text-align:center;">课程表</h2>
-  <div class="container" style=${style.container}>
-    <div class="left" data-drop="move" style=${style.left}>
+  <div class="container" style="${style.container}">
+    <div class="left" data-drop="move" style="${style.left}">
       ${getSubjectsDOMs()}
     </div>
-    <div class="right" style=${style.right}>
+    <div class="right" style="${style.right}">
       ${getTableDOM()}
     </div>
   </div>

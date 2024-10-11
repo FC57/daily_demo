@@ -13,9 +13,9 @@ export function largeFileChunksRender() {
   <div class="desc">⏳ 分片结果请按 <strong>F12</strong>，在控制台查看</div>
   <hr />
 
-  <div class="large-file" style=${style.largeFile}>
+  <div class="large-file" style="${style.largeFile}">
     <button class="select-file">选择文件</button>
-    <input type="file" style=${style.typeFile}/>
+    <input type="file" style="${style.typeFile}"/>
   </div>`;
 }
 

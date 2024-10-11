@@ -11,7 +11,7 @@ export const canvasRender = function () {
   <h5 style="color: #2f54eb">🎨 canvas 是个画布，可视为图片，可以“图片另存为”</h5>
   <hr />
 
-  <div class="content" style=${style.content}>
+  <div class="content" style="${style.content}">
     <video
       src="/assets/video/winter.mp4"
       class="source"
@@ -21,8 +21,8 @@ export const canvasRender = function () {
       muted
       autoplay
     ></video>
-    <div class="winWrap" style=${style.winWrap}>
-      <div class="winning" style=${style.winning}>特等奖</div>
+    <div class="winWrap" style="${style.winWrap}">
+      <div class="winning" style="${style.winning}">特等奖</div>
     </div>
   </div>`;
 };
