@@ -8,9 +8,9 @@ export function largeFileChunksRender() {
   };
 
   return `<h4>大文件，开启多线程分片</h4>
-  <h5>🚀 利用Worker开启多线程</h5>
-  <h5>🚀 利用算法库 spark-md5 计算chunk hash</h5>
-  <div class="desc">⏳ 分片结果请按 <strong>F12</strong>，在控制台查看</div>
+  <h5>🚀&emsp;利用Worker开启多线程</h5>
+  <h5>🚀&emsp;利用算法库 spark-md5 计算chunk hash</h5>
+  <div class="desc">⏳&emsp;分片结果请按 <strong>F12</strong>，在控制台查看</div>
   <hr />
 
   <div class="large-file" style="${style.largeFile}">

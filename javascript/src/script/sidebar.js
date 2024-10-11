@@ -5,6 +5,8 @@ import { dragbleRender, dragbleHandler } from '../dragbleApi.js';
 import { timingRender, timingHandler } from '../inaccurate-timing.js';
 import { indexedDBRender, indexedDBHandler as iHandler } from '../indexedDB.js';
 import { largeFileChunksRender, splitChunkHandler } from '../largeFile-chunks.js';
+import layoutGridRender from '../layout-grid.js';
+import loremRender from '../lorem.js';
 
 /** 侧边栏数据 */
 export default [
@@ -18,5 +20,7 @@ export default [
   { name: '正则替换截取文件名及后缀', render: 'file-suffix' },
   { name: '解决页面失活导致计时不准问题', render: timingRender, handler: timingHandler },
   { name: '浏览器存储-indexedDB, 存储大量结构化数据', render: indexedDBRender, handler: iHandler },
-  { name: '大文件，开启多线程分片', render: largeFileChunksRender, handler: splitChunkHandler }
+  { name: '大文件，开启多线程分片', render: largeFileChunksRender, handler: splitChunkHandler },
+  { name: 'grid 布局', render: layoutGridRender },
+  { name: '乱数假文 lorem 和 jw', render: loremRender }
 ];
