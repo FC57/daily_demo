@@ -75,6 +75,8 @@ function createNav(filterOptions, doms, isInit = false) {
     li.onclick = () => {
       doms.detail.style.opacity = 0;
       doms.mask.style.display = 'block';
+      // 清空控制台输出
+      console.clear();
       // 执行副作用并重置
       if (typeof lastOptionInfo.effect === 'function') {
         lastOptionInfo.effect();

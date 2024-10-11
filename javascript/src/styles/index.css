@@ -235,6 +235,15 @@ form[action$='destroy'] button {
 .detail h4 {
   color: #4d4d4d;
 }
+.detail h5 {
+  color: #4d4d4d;
+  font-size: 0.875em;
+}
+.detail .desc {
+  color: #2f54eb;
+  font-size: 0.875em;
+  margin: 1.67em 0;
+}
 
 .mask {
   display: none;

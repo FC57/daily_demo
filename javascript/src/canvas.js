@@ -8,7 +8,7 @@ export const canvasRender = function () {
   };
 
   return `<h4>canvas 练习</h4>
-  <h5 style="color: #f0f">canvas 是个画布，可视为图片，可以“图片另存为”</h5>
+  <h5 style="color: #2f54eb">🎨 canvas 是个画布，可视为图片，可以“图片另存为”</h5>
   <hr />
 
   <div class="content" style=${style.content}>
