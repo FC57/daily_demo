@@ -9,6 +9,8 @@ import layoutGridRender from '../layout-grid.js';
 import loremRender from '../lorem.js';
 import { mimeticStyleRender, setTabStyle } from '../mimeticStyle.js';
 import { scrollingNoticeRender, scrollingHandler } from '../scrollingNotice.js';
+import { strBytesRender, strBytesHandler as strHandler } from '../strBytes.js';
+import { textStrokeRender, strokeHandler } from '../text-stroke.js';
 
 /** 侧边栏数据 */
 export default [
@@ -26,5 +28,7 @@ export default [
   { name: 'grid 布局', render: layoutGridRender },
   { name: '乱数假文 lorem 和 jw', render: loremRender },
   { name: '拟态风格页签 ( tab-按压 )', render: mimeticStyleRender, handler: setTabStyle },
-  { name: '滚动公告', render: scrollingNoticeRender, handler: scrollingHandler }
+  { name: '滚动公告', render: scrollingNoticeRender, handler: scrollingHandler },
+  { name: '通过码元获取字符真实长度并计算所占字节数', render: strBytesRender, handler: strHandler },
+  { name: '解决文字阴影锯齿问题', render: textStrokeRender, handler: strokeHandler }
 ];
