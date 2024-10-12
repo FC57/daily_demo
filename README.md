@@ -76,7 +76,7 @@ npm start
 <br/>
 
 <p align="center">
-  <img src="./assets/imgs/s-preview.gif"/>
+  <img src="./assets/imgs/preview.gif"/>
 </p>
 
 <br/>
