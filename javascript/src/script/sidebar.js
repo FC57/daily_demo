@@ -11,6 +11,7 @@ import { mimeticStyleRender, setTabStyle } from '../mimeticStyle.js';
 import { scrollingNoticeRender, scrollingHandler } from '../scrollingNotice.js';
 import { strBytesRender, strBytesHandler as strHandler } from '../strBytes.js';
 import { textStrokeRender, strokeHandler } from '../text-stroke.js';
+import { uploadProgressRender as upload, progressHandler as pHandler } from '../upload-progress.js';
 
 /** 侧边栏数据 */
 export default [
@@ -30,5 +31,6 @@ export default [
   { name: '拟态风格页签 ( tab-按压 )', render: mimeticStyleRender, handler: setTabStyle },
   { name: '滚动公告', render: scrollingNoticeRender, handler: scrollingHandler },
   { name: '通过码元获取字符真实长度并计算所占字节数', render: strBytesRender, handler: strHandler },
-  { name: '解决文字阴影锯齿问题', render: textStrokeRender, handler: strokeHandler }
+  { name: '解决文字阴影锯齿问题', render: textStrokeRender, handler: strokeHandler },
+  { name: '模拟上传进度展示 ( 进度条、速率、剩余传输预估时间 )', render: upload, handler: pHandler }
 ];
