@@ -1,6 +1,7 @@
 // 大文件分片线程处理
 
-import '/dependent_libraries/node_modules/spark-md5.js';
+// 这里换成 CDN ，实际开发中项目库导入 import SparkMD5 from 'spark-md5'
+import SparkMD5 from 'https://cdn.jsdelivr.net/npm/spark-md5@3.0.2/+esm';
 
 /**
  * 获取当前分片数据
