@@ -58,7 +58,15 @@ export default [
 
       // typeScript (https://typescript-eslint.io/rules)
       // 不允许未使用的变量
-      '@typescript-eslint/no-unused-vars': 2, // Disallow unused variables
+      '@typescript-eslint/no-unused-vars': [
+        2, // Disallow unused variables
+        {
+          argsIgnorePattern: '^_', // 忽略以 _ 开头的参数
+          caughtErrorsIgnorePattern: '^_', // 忽略以 _ 开头的捕获错误变量
+          destructuredArrayIgnorePattern: '^_', // 忽略解构数组时以 _ 开头的变量
+          varsIgnorePattern: '^_' // 忽略以 _ 开头的常规变量
+        }
+      ],
       // 不允许使用@ts-ignore
       '@typescript-eslint/prefer-ts-expect-error': 2, // Disallow the use of @ts-ignore
       // 不允许使用@ts-<directive>注释或要求在指令后进行描述
