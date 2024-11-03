@@ -21,15 +21,24 @@ export declare function getRandomNumberFromTo(from: number, to: number, isIntege
 
 /**
  * 将任务放入微队列执行
- * @param {Function} callback 回调函数
+ * @param callback 回调函数
  */
-export declare function runMicroTask(callback: Function): void;
+export declare function runMicroTask(callback: () => void): void;
+
+/** 柯里化类型 */
+type Curried<A extends any[], R> = A extends []
+  ? () => R
+  : A extends [infer P]
+    ? (x: P) => R
+    : A extends [infer P, ...infer Rest]
+      ? (x: P) => Curried<Rest, R>
+      : never;
 
 /**
- * 科里化函数
+ * 柯里化函数
  * * 在函数编程中，作用是把多参函数变为单参函数
- * @param {Function} fun 函数
- * @param {*} that 函数this
- * @param {*} args 剩余参数（或固定参数）数组
+ * @param fun 函数
+ * @param {*} ctx 函数this
+ * @param args 剩余参数（或固定参数）数组
  */
-export declare function curry(fun: Function, that: any, ...args: any[]): Function;
+export declare function curry<A extends any[], R>(fun: (...args: A) => R, ctx: any, ...args: A): Curried<A, R>;
