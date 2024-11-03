@@ -14,3 +14,6 @@ type Optional<T, K extends keyof T = keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 type GetOptional<T extends Record<keyof any, any>> = {
   [P in keyof T as T[P] extends Required<T>[P] ? never : P]: T[P];
 };
+
+/** 联合类型转交叉类型 */
+type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (x: infer R) => any ? R : never;
